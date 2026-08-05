@@ -2946,9 +2946,9 @@ section > .container {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 24px !important;
+  gap: 14px !important;
   margin: 48px auto !important;
-  max-width: 540px !important;
+  max-width: 520px !important;
   transform: none !important;
 }
 
@@ -2963,37 +2963,39 @@ section > .container {
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
-  border-radius: 12px !important;
-  clip-path: none !important;
-  padding: 16px 24px !important;
   transition: all 0.3s ease !important;
+  position: relative !important;
+  border-radius: 0 !important;
 }
 
-/* ─── L1: 상단 (핵심 결론) ─── */
+/* ─── L1: 꼭대기 삼각형 ─── */
 .pyramid-l1-3d .pyramid-level-inner {
-  width: 280px !important;
-  height: 64px !important;
-  background: linear-gradient(135deg, #991325, #7B1123) !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
+  width: 180px !important;
+  height: 76px !important;
+  background: linear-gradient(180deg, #d44050, #991325 60%, #7B1123) !important;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%) !important;
   box-shadow: 0 8px 24px rgba(153, 19, 37, 0.4) !important;
-  padding-top: 0 !important;
+  padding-top: 22px !important;
 }
 
 .pyramid-l1-3d .pyramid-label {
   color: #ffffff !important;
   font-weight: 700 !important;
-  font-size: 0.95rem !important;
+  font-size: 0.9rem !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
   letter-spacing: 0.02em !important;
 }
 
-/* ─── L2: 중간 (독립된 3대 근거) ─── */
+/* ─── L2: 중간 사다리꼴 ─── */
 .pyramid-l2-3d .pyramid-level-inner {
-  width: 400px !important;
-  height: 64px !important;
-  background: rgba(153, 19, 37, 0.15) !important;
-  border: 1px solid rgba(153, 19, 37, 0.4) !important;
+  width: 340px !important;
+  height: 76px !important;
+  background: linear-gradient(180deg, rgba(153, 19, 37, 0.35), rgba(123, 17, 38, 0.2)) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(153, 19, 37, 0.4) !important;
+  clip-path: polygon(21.3% 0%, 78.7% 0%, 100% 100%, 0% 100%) !important;
   backdrop-filter: blur(12px) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .pyramid-l2-3d .pyramid-label {
@@ -3003,14 +3005,16 @@ section > .container {
   letter-spacing: 0.02em !important;
 }
 
-/* ─── L3: 하단 (사실·외부 근거) ─── */
+/* ─── L3: 바닥 사다리꼴 ─── */
 .pyramid-l3-3d .pyramid-level-inner {
-  width: 520px !important;
-  height: 64px !important;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  width: 500px !important;
+  height: 76px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  clip-path: polygon(14.5% 0%, 85.5% 0%, 100% 100%, 0% 100%) !important;
   backdrop-filter: blur(12px) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 .pyramid-l3-3d .pyramid-label {
