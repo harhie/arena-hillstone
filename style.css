@@ -2943,95 +2943,81 @@ section > .container {
    - L3: 상단 333px → 하단 500px (3/3)
    ══════════════════════════════════════════════════ */
 .pyramid-3d {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  transform: none;
-  padding: 10px 0;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 24px !important;
+  margin: 48px auto !important;
+  max-width: 540px !important;
+  transform: none !important;
 }
 
 .pyramid-level {
-  display: flex;
-  justify-content: center;
-  transition: all 0.4s var(--ease-out);
-  margin-bottom: 4px;
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
 }
 
 .pyramid-level-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: all 0.4s var(--ease-out);
-  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border-radius: 12px !important;
+  clip-path: none !important;
+  padding: 16px 24px !important;
+  transition: all 0.3s ease !important;
 }
 
-/* ─── L1: 꼭대기 삼각형 (0 → 166px) ─── */
+/* ─── L1: 상단 (핵심 결론) ─── */
 .pyramid-l1-3d .pyramid-level-inner {
-  width: 166px;
-  height: 80px;
-  background: linear-gradient(180deg, #d44050, #b83240 50%, #7B1123);
-  box-shadow:
-    0 8px 30px rgba(123,17,38,0.5),
-    0 2px 8px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-  padding-top: 24px;
+  width: 280px !important;
+  height: 64px !important;
+  background: linear-gradient(135deg, #991325, #7B1123) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: 0 8px 24px rgba(153, 19, 37, 0.4) !important;
+  padding-top: 0 !important;
 }
 
 .pyramid-l1-3d .pyramid-label {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-  letter-spacing: 0.02em;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.02em !important;
 }
 
-/* ─── L2: 중간 사다리꼴 (166px → 333px) ─── */
-/* 상단 166/333 = 49.85% → inset = 25.07% each side */
+/* ─── L2: 중간 (독립된 3대 근거) ─── */
 .pyramid-l2-3d .pyramid-level-inner {
-  width: 333px;
-  height: 80px;
-  background: linear-gradient(180deg, rgba(123,17,38,0.3), rgba(123,17,38,0.15));
-  border: 1px solid rgba(123,17,38,0.3);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow:
-    0 8px 30px rgba(123,17,38,0.2),
-    0 2px 8px rgba(0,0,0,0.2),
-    inset 0 1px 0 rgba(255,255,255,0.08);
-  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  width: 400px !important;
+  height: 64px !important;
+  background: rgba(153, 19, 37, 0.15) !important;
+  border: 1px solid rgba(153, 19, 37, 0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .pyramid-l2-3d .pyramid-label {
-  color: #e8b4bc;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  color: #e8b4bc !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.02em !important;
 }
 
-/* ─── L3: 바닥 사다리꼴 (333px → 500px) ─── */
-/* 상단 333/500 = 66.6% → inset = 16.7% each side */
+/* ─── L3: 하단 (사실·외부 근거) ─── */
 .pyramid-l3-3d .pyramid-level-inner {
-  width: 500px;
-  height: 80px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow:
-    0 8px 30px rgba(0,0,0,0.2),
-    0 2px 8px rgba(0,0,0,0.15),
-    inset 0 1px 0 rgba(255,255,255,0.06);
-  clip-path: polygon(16.7% 0%, 83.3% 0%, 100% 100%, 0% 100%);
+  width: 520px !important;
+  height: 64px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .pyramid-l3-3d .pyramid-label {
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 0.03em !important;
 }
 
 /* 호버 효과 — 각 레벨이 살짝 빛남 */
