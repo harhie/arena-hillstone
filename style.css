@@ -2946,15 +2946,16 @@ section > .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  transform: rotateX(6deg);
-  transform-style: preserve-3d;
+  gap: 20px;
+  transform: none;
+  padding: 10px 0;
 }
 
 .pyramid-level {
   display: flex;
   justify-content: center;
   transition: all 0.4s var(--ease-out);
+  margin-bottom: 4px;
 }
 
 .pyramid-level-inner {
