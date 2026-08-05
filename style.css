@@ -2946,7 +2946,7 @@ section > .container {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 14px !important;
+  gap: 26px !important;
   margin: 48px auto !important;
   max-width: 520px !important;
   transform: none !important;
