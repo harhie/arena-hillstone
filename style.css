@@ -79,12 +79,9 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-snap-type: y proximity;
+  /* scroll-snap 제거 — 마지막 섹션에서 스크롤이 위로 튕기는 문제 방지 */
 }
 
-@media (max-width: 768px) {
-  html { scroll-snap-type: none; }
-}
 
 body {
   font-family: var(--font-sans);
@@ -1713,9 +1710,9 @@ img {
    시안 C — 인터랙티브 스토리텔링 추가 스타일
    ══════════════════════════════════════════════════ */
 
-/* ─── 풀스크린 섹션 스냅 ─── */
+/* ─── 풀스크린 섹션 (스냅 제거 — 마지막 섹션 접근 불가 문제 방지) ─── */
 section {
-  scroll-snap-align: start;
+  scroll-snap-align: none;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
