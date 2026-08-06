@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자주 묻는 질문 — ArenaChat</title>
+  <meta name="description" content="ArenaChat AI 전략 컨설팅 서비스에 대해 자주 묻는 질문들을 확인하세요." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-hover: rgba(255,255,255,0.07);
+      --text: #ffffff;
+      --text-sub: rgba(255,255,255,0.65);
+      --text-muted: rgba(255,255,255,0.4);
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.16);
+      --accent: #8e1828;
+      --accent-light: rgba(142,24,40,0.15);
+      --font: 'Inter', 'Noto Sans KR', sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── 네비게이션 ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(20px,5vw,80px);
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 28px; }
+    .nav-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text-sub); text-decoration: none; font-size: 14px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 16px; height: 16px; }
+
+    /* ── 페이지 헤더 ── */
+    .page-header {
+      padding: 140px clamp(20px,5vw,80px) 72px;
+      max-width: 1200px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-light); border: 1px solid rgba(142,24,40,0.3);
+      color: #e87b87; font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .page-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .page-desc { font-size: 17px; color: var(--text-sub); max-width: 560px; }
+
+    /* ── FAQ 본문 ── */
+    .faq-body {
+      max-width: 1200px; margin: 0 auto;
+      padding: 64px clamp(20px,5vw,80px) 120px;
+      display: grid; grid-template-columns: 240px 1fr; gap: 64px;
+    }
+    @media (max-width: 768px) {
+      .faq-body { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* 사이드 카테고리 */
+    .faq-sidebar { position: sticky; top: 88px; height: fit-content; }
+    .faq-sidebar h3 { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .faq-cat-btn {
+      display: block; width: 100%; text-align: left;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-sub); font-size: 14px; font-family: var(--font);
+      padding: 10px 12px; border-radius: 8px;
+      transition: all .2s; margin-bottom: 2px;
+    }
+    .faq-cat-btn:hover, .faq-cat-btn.active {
+      background: var(--bg-card); color: var(--text);
+    }
+    .faq-cat-btn.active { color: #e87b87; }
+
+    /* FAQ 목록 */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-category-title {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-muted); margin: 40px 0 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-category-title:first-child { margin-top: 0; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      font-family: var(--font); text-align: left;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; padding: 22px 0;
+      color: var(--text); font-size: 16px; font-weight: 500; line-height: 1.5;
+      transition: color .2s;
+    }
+    .faq-question:hover { color: #e87b87; }
+    .faq-icon {
+      flex-shrink: 0; width: 24px; height: 24px;
+      border: 1px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .3s;
+    }
+    .faq-icon svg { transition: transform .3s; }
+    .faq-item.open .faq-icon { background: var(--accent-light); border-color: rgba(142,24,40,0.4); }
+    .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease;
+    }
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      color: var(--text-sub); font-size: 15px; line-height: 1.8;
+    }
+    .faq-answer-placeholder {
+      display: inline-block;
+      background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 16px 20px;
+      color: var(--text-muted); font-size: 14px; font-style: italic;
+      width: 100%;
+    }
+
+    /* ── 푸터 ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px clamp(20px,5vw,80px);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--text-sub); }
+    .footer-links { display: flex; gap: 24px; }
+  </style>
+</head>
+<body>
+
+  <!-- 네비게이션 -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 12L6 8l4-4"/></svg>
+      메인으로 돌아가기
+    </a>
+  </nav>
+
+  <!-- 페이지 헤더 -->
+  <div class="page-header">
+    <div class="page-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      자주 묻는 질문
+    </div>
+    <h1 class="page-title">궁금한 점이 있으신가요?</h1>
+    <p class="page-desc">ArenaChat 서비스에 대한 주요 질문들을 정리했습니다. 더 궁금한 점은 문의하기를 이용해 주세요.</p>
+  </div>
+
+  <!-- FAQ 본문 -->
+  <div class="faq-body">
+
+    <!-- 사이드바 카테고리 -->
+    <aside class="faq-sidebar">
+      <h3>카테고리</h3>
+      <button class="faq-cat-btn active" onclick="scrollToSection('cat-service')">서비스 개요</button>
+      <button class="faq-cat-btn" onclick="scrollToSection('cat-process')">이용 방법 및 프로세스</button>
+      <button class="faq-cat-btn" onclick="scrollToSection('cat-output')">결과물 및 보고서</button>
+      <button class="faq-cat-btn" onclick="scrollToSection('cat-tech')">기술 및 데이터</button>
+      <button class="faq-cat-btn" onclick="scrollToSection('cat-security')">보안 및 개인정보</button>
+      <button class="faq-cat-btn" onclick="scrollToSection('cat-price')">요금 및 환불</button>
+    </aside>
+
+    <!-- FAQ 목록 -->
+    <div class="faq-list">
+
+      <!-- ── 서비스 개요 ── -->
+      <div class="faq-category-title" id="cat-service">서비스 개요</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ArenaChat은 어떤 서비스인가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          일반 AI 챗봇(ChatGPT 등)과 어떻게 다른가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          어떤 분야·업종에서 활용할 수 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          실제 컨설턴트가 개입하나요, 아니면 완전히 AI가 처리하나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <!-- ── 이용 방법 및 프로세스 ── -->
+      <div class="faq-category-title" id="cat-process">이용 방법 및 프로세스</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          서비스 이용 절차는 어떻게 되나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          처음에 입력해야 하는 정보는 무엇인가요? 준비해야 할 자료가 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          분석 보고서 작성까지 얼마나 걸리나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          분석 중에 추가 질문이나 수정 요청이 가능한가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <!-- ── 결과물 및 보고서 ── -->
+      <div class="faq-category-title" id="cat-output">결과물 및 보고서</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          한 번의 컨설팅으로 어떤 결과물을 받을 수 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          보고서는 어떤 형식(PDF, PPT 등)으로 받을 수 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          결과물에 만족하지 못할 경우 어떻게 되나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          보고서를 사내 공유 또는 외부 발표 자료로 활용할 수 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <!-- ── 기술 및 데이터 ── -->
+      <div class="faq-category-title" id="cat-tech">기술 및 데이터</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          분석에 활용하는 데이터의 출처는 어디인가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          McKinsey·BCG·Bain의 방법론을 어떻게 AI로 구현했나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          AI 분석 결과의 정확도와 신뢰성은 어느 정도인가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <!-- ── 보안 및 개인정보 ── -->
+      <div class="faq-category-title" id="cat-security">보안 및 개인정보</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          입력한 사업 정보와 데이터는 안전하게 보호되나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          입력한 정보가 AI 학습에 활용되거나 외부에 유출될 수 있나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          기업 기밀이 포함된 내용을 입력해도 괜찮나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <!-- ── 요금 및 환불 ── -->
+      <div class="faq-category-title" id="cat-price">요금 및 환불</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          이용 요금은 어떻게 되나요? 구독제인가요, 건별 과금인가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          무료 체험이나 데모 이용이 가능한가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          환불 정책은 어떻게 되나요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          기업 단위 계약이나 볼륨 할인이 가능한가요?
+          <span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <span class="faq-answer-placeholder">✏️ 답변을 입력해 주세요</span>
+        </div></div>
+      </div>
+
+    </div><!-- /faq-list -->
+  </div><!-- /faq-body -->
+
+  <!-- 푸터 -->
+  <footer>
+    <span>© 2026 Hillstone. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="terms.html">이용 약관</a>
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="contact.html">문의하기</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      // 모두 닫기
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        const offset = el.getBoundingClientRect().top + window.scrollY - 100;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+      document.querySelectorAll('.faq-cat-btn').forEach(b => b.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>

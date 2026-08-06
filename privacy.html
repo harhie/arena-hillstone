@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인정보 처리방침 — ArenaChat</title>
+  <meta name="description" content="ArenaChat AI 전략 컨설팅 서비스의 개인정보 처리방침입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0f;
+      --text: #ffffff;
+      --text-sub: rgba(255,255,255,0.7);
+      --text-muted: rgba(255,255,255,0.4);
+      --border: rgba(255,255,255,0.08);
+      --accent: #8e1828;
+      --accent-light: rgba(142,24,40,0.15);
+      --font: 'Inter', 'Noto Sans KR', sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(20px,5vw,80px);
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 28px; }
+    .nav-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text-sub); text-decoration: none; font-size: 14px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    .doc-wrap {
+      max-width: 800px; margin: 0 auto;
+      padding: 120px clamp(20px,5vw,40px) 120px;
+    }
+    .doc-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-light); border: 1px solid rgba(142,24,40,0.3);
+      color: #e87b87; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .doc-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 12px;
+    }
+    .doc-date { font-size: 14px; color: var(--text-muted); margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+
+    .doc-intro {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 28px; margin-bottom: 48px;
+      color: var(--text-sub); font-size: 15px;
+    }
+
+    .doc-section { margin-bottom: 48px; }
+    .doc-section h2 {
+      font-size: 18px; font-weight: 700; margin-bottom: 16px;
+      color: var(--text); padding-left: 14px;
+      border-left: 3px solid var(--accent);
+    }
+    .doc-section h3 { font-size: 15px; font-weight: 600; margin: 24px 0 10px; color: var(--text); }
+    .doc-section p { font-size: 15px; color: var(--text-sub); margin-bottom: 12px; }
+    .doc-section ol, .doc-section ul { padding-left: 20px; color: var(--text-sub); font-size: 15px; }
+    .doc-section li { margin-bottom: 8px; }
+
+    table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      margin: 16px 0; color: var(--text-sub);
+    }
+    th {
+      background: rgba(255,255,255,0.06); color: var(--text);
+      font-weight: 600; font-size: 13px;
+      padding: 12px 16px; text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .highlight-box {
+      background: rgba(142,24,40,0.08); border: 1px solid rgba(142,24,40,0.25);
+      border-radius: 10px; padding: 20px 24px; margin: 16px 0;
+      color: var(--text-sub); font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px clamp(20px,5vw,80px);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+      color: var(--text-muted); font-size: 13px;
+    }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--text-sub); }
+    .footer-links { display: flex; gap: 24px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" style="text-decoration:none;">
+      <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone" height="28" />
+    </a>
+    <a href="index.html" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 12L6 8l4-4"/></svg>
+      메인으로 돌아가기
+    </a>
+  </nav>
+
+  <div class="doc-wrap">
+    <div class="doc-badge">개인정보 처리방침</div>
+    <h1 class="doc-title">개인정보 처리방침</h1>
+    <p class="doc-date">시행일: 2026년 1월 1일 &nbsp;|&nbsp; 최종 수정: 2026년 8월 1일</p>
+
+    <div class="doc-intro">
+      힐스톤(이하 "회사")은 정보주체의 개인정보를 중요시하며, 「개인정보 보호법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 등 관련 법령을 준수합니다. 이 방침은 회사가 제공하는 ArenaChat 서비스 이용과 관련하여 수집·이용·보관·파기하는 개인정보에 대한 처리 현황을 안내합니다.
+    </div>
+
+    <div class="doc-section">
+      <h2>제1조 (수집하는 개인정보의 항목 및 수집 방법)</h2>
+      <h3>1. 수집 항목</h3>
+      <table>
+        <thead>
+          <tr><th>구분</th><th>수집 항목</th><th>목적</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>회원 가입</td><td>이메일 주소, 비밀번호(암호화), 이름(선택)</td><td>회원 식별 및 서비스 제공</td></tr>
+          <tr><td>서비스 이용</td><td>입력 질문·데이터, 보고서 내용, 이용 이력</td><td>AI 컨설팅 서비스 제공</td></tr>
+          <tr><td>결제</td><td>결제수단 정보(PG사 보관), 거래 내역</td><td>요금 결제 및 환불 처리</td></tr>
+          <tr><td>자동 수집</td><td>IP 주소, 쿠키, 접속 로그, 기기 정보</td><td>서비스 보안 및 품질 개선</td></tr>
+          <tr><td>문의</td><td>이름, 이메일, 문의 내용</td><td>고객 지원 및 민원 처리</td></tr>
+        </tbody>
+      </table>
+      <h3>2. 수집 방법</h3>
+      <ul>
+        <li>서비스 가입 및 이용 과정에서 이용자가 직접 입력</li>
+        <li>서비스 이용 중 자동으로 생성·수집되는 정보</li>
+        <li>고객 문의 시 이용자가 제공하는 정보</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <h2>제2조 (개인정보의 수집 및 이용 목적)</h2>
+      <ol>
+        <li>회원 가입 및 관리: 회원제 서비스 이용에 따른 본인 확인, 개인 식별, 불량 회원의 부정 이용 방지</li>
+        <li>서비스 제공: AI 기반 전략 컨설팅 분석·보고서 생성 서비스 제공</li>
+        <li>서비스 개선: 서비스 품질 향상, 기능 개발, 오류 분석</li>
+        <li>마케팅 및 광고(동의 시): 신규 서비스 및 이벤트 안내</li>
+        <li>고객 지원: 민원 접수·처리, 분쟁 조정, 공지사항 전달</li>
+        <li>법적 의무 이행: 관련 법령에 따른 기록 보존</li>
+      </ol>
+    </div>
+
+    <div class="doc-section">
+      <h2>제3조 (개인정보의 보유 및 이용 기간)</h2>
+      <table>
+        <thead>
+          <tr><th>항목</th><th>보유 기간</th><th>근거</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>회원 정보</td><td>회원 탈퇴 시까지</td><td>서비스 운영</td></tr>
+          <tr><td>서비스 이용 기록</td><td>서비스 종료 후 1년</td><td>분쟁 해결</td></tr>
+          <tr><td>결제·거래 기록</td><td>5년</td><td>전자상거래법</td></tr>
+          <tr><td>소비자 불만·분쟁 기록</td><td>3년</td><td>전자상거래법</td></tr>
+          <tr><td>접속 로그</td><td>3개월</td><td>통신비밀보호법</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-section">
+      <h2>제4조 (개인정보의 제3자 제공)</h2>
+      <p>회사는 원칙적으로 이용자의 개인정보를 외부에 제공하지 않습니다. 단, 다음의 경우에는 예외로 합니다.</p>
+      <ul>
+        <li>이용자가 사전에 동의한 경우</li>
+        <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>📌 중요:</strong> 이용자가 서비스에 입력한 사업 정보 및 데이터는 AI 학습에 활용되지 않으며, 제3자에게 제공되지 않습니다.
+      </div>
+    </div>
+
+    <div class="doc-section">
+      <h2>제5조 (개인정보 처리의 위탁)</h2>
+      <table>
+        <thead>
+          <tr><th>수탁 업체</th><th>위탁 업무</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>결제 대행사(PG사)</td><td>결제 처리 및 환불</td></tr>
+          <tr><td>클라우드 서비스 제공자</td><td>서버 운영 및 데이터 보관</td></tr>
+          <tr><td>이메일 발송 서비스</td><td>서비스 알림 및 공지 발송</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="doc-section">
+      <h2>제6조 (개인정보의 파기)</h2>
+      <ol>
+        <li>회사는 개인정보 보유 기간의 경과, 처리 목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.</li>
+        <li><strong>전자적 파일 형태:</strong> 복원이 불가능한 방법으로 영구 삭제</li>
+        <li><strong>종이 문서 형태:</strong> 분쇄기 등을 이용하여 물리적 파기</li>
+      </ol>
+    </div>
+
+    <div class="doc-section">
+      <h2>제7조 (정보주체의 권리·의무 및 행사 방법)</h2>
+      <p>이용자는 다음과 같은 권리를 행사할 수 있습니다.</p>
+      <ul>
+        <li><strong>열람 요청:</strong> 회사가 처리하는 자신의 개인정보 열람 요청</li>
+        <li><strong>정정·삭제 요청:</strong> 개인정보의 정정 또는 삭제 요청</li>
+        <li><strong>처리 정지 요청:</strong> 개인정보 처리의 정지 요청</li>
+        <li><strong>동의 철회:</strong> 개인정보 처리 동의 철회</li>
+      </ul>
+      <p style="margin-top:16px;">위 권리 행사는 서비스 내 계정 설정 또는 <a href="contact.html" style="color:#e87b87; text-decoration:none;">문의하기</a>를 통해 요청하실 수 있으며, 회사는 10일 이내에 처리합니다.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2>제8조 (개인정보 보안 조치)</h2>
+      <p>회사는 개인정보를 안전하게 관리하기 위해 다음의 기술적·관리적 보호조치를 취하고 있습니다.</p>
+      <ul>
+        <li>비밀번호 암호화 저장 (단방향 해시)</li>
+        <li>전송 구간 SSL/TLS 암호화</li>
+        <li>개인정보 접근 권한의 최소화 및 접근 이력 관리</li>
+        <li>외부 해킹·침입에 대비한 보안 시스템 운영</li>
+        <li>개인정보 취급 직원 대상 정기 보안 교육 실시</li>
+      </ul>
+    </div>
+
+    <div class="doc-section">
+      <h2>제9조 (쿠키의 운영 및 거부)</h2>
+      <ol>
+        <li>회사는 이용자에게 최적의 서비스를 제공하기 위해 쿠키를 사용합니다.</li>
+        <li>이용자는 브라우저 설정을 통해 쿠키 저장을 거부할 수 있습니다. 단, 쿠키 저장 거부 시 일부 서비스 이용이 제한될 수 있습니다.</li>
+      </ol>
+    </div>
+
+    <div class="doc-section">
+      <h2>제10조 (개인정보 보호 책임자)</h2>
+      <table>
+        <thead>
+          <tr><th>구분</th><th>내용</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>개인정보 보호 책임자</td><td>힐스톤 대표</td></tr>
+          <tr><td>문의</td><td><a href="contact.html" style="color:#e87b87; text-decoration:none;">문의하기 페이지</a></td></tr>
+          <tr><td>처리 기간</td><td>접수 후 10일 이내</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px;">기타 개인정보 침해 신고·상담은 개인정보보호위원회(privacy.go.kr / 국번 없이 182) 또는 한국인터넷진흥원(privacy.kisa.or.kr)을 이용하실 수 있습니다.</p>
+    </div>
+
+    <div class="doc-section">
+      <h2>부칙</h2>
+      <p>이 방침은 2026년 1월 1일부터 시행합니다. 방침 변경 시 변경 내용을 서비스 내 공지사항을 통해 고지합니다.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 Hillstone. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="faq.html">자주 묻는 질문</a>
+      <a href="terms.html">이용 약관</a>
+      <a href="contact.html">문의하기</a>
+    </div>
+  </footer>
+</body>
+</html>
