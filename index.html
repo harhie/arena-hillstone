@@ -8,7 +8,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=206" />
+  <link rel="stylesheet" href="style.css?v=207" />
+  <style>
+    /* ── 언어 토글 버튼 ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 3px;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.45);
+      padding: 4px 10px;
+      border-radius: 16px;
+      transition: all .2s;
+      line-height: 1;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.15);
+      color: #ffffff;
+    }
+    .lang-btn:hover:not(.active) {
+      color: rgba(255,255,255,0.75);
+    }
+  </style>
 </head>
 <body>
   <!-- ─── 네비게이션 ─── -->
@@ -18,11 +53,16 @@
         <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone Logo" height="32" />
       </a>
       <div class="nav-links">
-        <a href="#mbb">방법론</a>
-        <a href="#process">진행 방식</a>
-        <a href="#analysis">분석 역량</a>
-        <a href="#report">보고서</a>
-        <a href="#cases">활용 사례</a>
+        <a href="#mbb"      data-i18n="nav_methodology">방법론</a>
+        <a href="#process"  data-i18n="nav_process">진행 방식</a>
+        <a href="#analysis" data-i18n="nav_analysis">분석 역량</a>
+        <a href="#report"   data-i18n="nav_report">보고서</a>
+        <a href="#cases"    data-i18n="nav_cases">활용 사례</a>
+      </div>
+      <!-- 언어 전환 토글 -->
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="ko" onclick="applyLang('ko')">KO</button>
+        <button class="lang-btn"        data-lang="en" onclick="applyLang('en')">EN</button>
       </div>
       <button class="nav-mobile-toggle" id="mobileToggle" aria-label="메뉴 열기">
         <span></span><span></span><span></span>
@@ -30,11 +70,11 @@
     </div>
     <!-- 모바일 메뉴 -->
     <div class="nav-mobile-menu" id="mobileMenu">
-      <a href="#mbb">방법론</a>
-      <a href="#process">진행 방식</a>
-      <a href="#analysis">분석 역량</a>
-      <a href="#report">보고서</a>
-      <a href="#cases">활용 사례</a>
+      <a href="#mbb"      data-i18n="nav_methodology">방법론</a>
+      <a href="#process"  data-i18n="nav_process">진행 방식</a>
+      <a href="#analysis" data-i18n="nav_analysis">분석 역량</a>
+      <a href="#report"   data-i18n="nav_report">보고서</a>
+      <a href="#cases"    data-i18n="nav_cases">활용 사례</a>
     </div>
   </nav>
 
@@ -54,36 +94,36 @@
       </div>
       <h1 class="hero-title fade-up delay-1">
         <span class="hero-brand-title" style="display: block; font-size: clamp(3.2rem, 7vw, 5.2rem); font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #ffffff 10%, #f0c0c8 50%, #d44050 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; filter: drop-shadow(0 0 35px rgba(153, 19, 37, 0.5));">ArenaChat</span>
-        지금까지 경험해보지 못한<br />
-        <span class="gradient-text" style="background: linear-gradient(135deg, #f0c0c8, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">최고의 전략 컨설팅</span>이 시작됩니다
+        <span data-i18n="hero_tagline_1">지금까지 경험해보지 못한</span><br />
+        <span class="gradient-text" data-i18n="hero_tagline_2" style="background: linear-gradient(135deg, #f0c0c8, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">최고의 전략 컨설팅</span>
+        <span data-i18n="hero_tagline_3">이 시작됩니다</span>
       </h1>
-      <p class="hero-subtitle fade-up delay-2">
-        글로벌 Top 3 컨설팅펌(McKinsey · BCG · Bain)의 핵심 방법론을 AI로 구현하여<br />
-        기존 수천만 원 수준의 컨설팅 비용으로 얻을 수 있었던 독보적인 전략 인사이트를 제공합니다.
+      <p class="hero-subtitle fade-up delay-2" data-i18n="hero_subtitle">
+        글로벌 Top 3 컨설팅펌(McKinsey · BCG · Bain)의 핵심 방법론을 AI로 구현하여<br />기존 수천만 원 수준의 컨설팅 비용으로 얻을 수 있었던 독보적인 전략 인사이트를 제공합니다.
       </p>
       <div class="hero-actions fade-up delay-3">
         <a href="#cta" class="btn btn-primary btn-lg">
-          <span>컨설팅 요청하기</span>
+          <span data-i18n="hero_cta_primary">컨설팅 요청하기</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#process" class="btn btn-ghost btn-lg">
-          <span>어떻게 진행되나요?</span>
+          <span data-i18n="hero_cta_ghost">어떻게 진행되나요?</span>
         </a>
       </div>
       <div class="hero-stats fade-up delay-4">
         <div class="stat-item">
           <span class="stat-number" data-target="3">0</span>
-          <span class="stat-label">글로벌 Top 컨설팅펌 방법론</span>
+          <span class="stat-label" data-i18n="stat_label_1">글로벌 Top 컨설팅펌 방법론</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-number" data-target="10">0</span>
-          <span class="stat-label">핵심 분석 축 커버리지</span>
+          <span class="stat-label" data-i18n="stat_label_2">핵심 분석 축 커버리지</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
           <span class="stat-number" data-target="14">0</span>
-          <span class="stat-label">보고서 분석 섹션</span>
+          <span class="stat-label" data-i18n="stat_label_3">보고서 분석 섹션</span>
         </div>
       </div>
     </div>
@@ -97,10 +137,9 @@
     <div class="container">
       <div class="problem-grid">
         <div class="problem-text fade-up">
-          <span class="section-label">WHY HILLSTONE ARENA</span>
-          <h2 class="section-title">
-            사업 결정 앞에서<br />
-            <span class="gradient-text">이런 고민</span>을 하고 계신가요?
+          <span class="section-label" data-i18n="problem_label">WHY HILLSTONE ARENA</span>
+          <h2 class="section-title" data-i18n="problem_title">
+            사업 결정 앞에서<br /><span class="gradient-text">이런 고민</span>을 하고 계신가요?
           </h2>
         </div>
         <div class="problem-cards">
@@ -108,22 +147,22 @@
             <div class="problem-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
             </div>
-            <h3>"시장에 가능성이 있는 건 알겠는데, 어디서부터 시작해야 할지 모르겠습니다"</h3>
-            <p>좋은 아이디어가 있지만 실행 가능성을 체계적으로 검증할 방법이 없어 감에 의존하게 됩니다.</p>
+            <h3 data-i18n="problem_card1_title">"시장에 가능성이 있는 건 알겠는데, 어디서부터 시작해야 할지 모르겠습니다"</h3>
+            <p data-i18n="problem_card1_desc">좋은 아이디어가 있지만 실행 가능성을 체계적으로 검증할 방법이 없어 감에 의존하게 됩니다.</p>
           </div>
           <div class="problem-card scroll-reveal stagger-2">
             <div class="problem-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
             </div>
-            <h3>"전문 컨설팅은 수천만 원이 넘고, 일반 자문은 너무 피상적입니다"</h3>
-            <p>깊이 있는 분석이 필요하지만, 대형 컨설팅펌의 비용은 감당하기 어렵습니다.</p>
+            <h3 data-i18n="problem_card2_title">"전문 컨설팅은 수천만 원이 넘고, 일반 자문은 너무 피상적입니다"</h3>
+            <p data-i18n="problem_card2_desc">깊이 있는 분석이 필요하지만, 대형 컨설팅펌의 비용은 감당하기 어렵습니다.</p>
           </div>
           <div class="problem-card scroll-reveal stagger-3">
             <div class="problem-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
-            <h3>"AI에게 물어봐도 일반 검색 결과에서 벗어나지 못하고, 매번 똑같은 답만 합니다"</h3>
-            <p>단순 리서치나 데이터 검색 결과물이 아니라 검증된 진단 알고리즘을 통한 결과물이 필요합니다.</p>
+            <h3 data-i18n="problem_card3_title">"AI에게 물어봐도 일반 검색 결과에서 벗어나지 못하고, 매번 똑같은 답만 합니다"</h3>
+            <p data-i18n="problem_card3_desc">단순 리서치나 데이터 검색 결과물이 아니라 검증된 진단 알고리즘을 통한 결과물이 필요합니다.</p>
           </div>
         </div>
       </div>
@@ -134,14 +173,12 @@
   <section class="mbb-section section-dark" id="mbb">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">GLOBAL CONSULTING FRAMEWORK</span>
-        <h2 class="section-title">
-          세계 최고 컨설팅펌의<br />
-          <span class="gradient-text">검증된 방법론</span>을 그대로 적용합니다
+        <span class="section-label" data-i18n="mbb_label">GLOBAL CONSULTING FRAMEWORK</span>
+        <h2 class="section-title" data-i18n="mbb_title">
+          세계 최고 컨설팅펌의<br /><span class="gradient-text">검증된 방법론</span>을 그대로 적용합니다
         </h2>
-        <p class="section-desc">
-          50년 이상 글로벌 기업들의 전략적 의사결정을 이끌어 온<br />
-          3대 컨설팅펌의 핵심 방법론을 AI로 구현하여 모든 비즈니스 검증에 적용합니다.
+        <p class="section-desc" data-i18n="mbb_desc">
+          50년 이상 글로벌 기업들의 전략적 의사결정을 이끌어 온<br />3대 컨설팅펌의 핵심 방법론을 AI로 구현하여 모든 비즈니스 검증에 적용합니다.
         </p>
       </div>
 
@@ -153,38 +190,25 @@
               <img src="images/mckinsey.svg" alt="McKinsey" style="filter: brightness(0) invert(1);" />
             </div>
             <div>
-              
-              <span class="mbb-tagline">가설 기반 문제 해결</span>
+              <span class="mbb-tagline" data-i18n="mck_tagline">가설 기반 문제 해결</span>
             </div>
           </div>
           <div class="mbb-methods">
             <div class="mbb-method">
               <div class="mbb-method-dot"></div>
-              <div>
-                <h4>MECE 분석</h4>
-                <p>상호 배타적이고 전체를 포괄하는 분류로 문제를 빠짐없이 분해합니다</p>
-              </div>
+              <div><h4 data-i18n="mck_m1_title">MECE 분석</h4><p data-i18n="mck_m1_desc">상호 배타적이고 전체를 포괄하는 분류로 문제를 빠짐없이 분해합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot"></div>
-              <div>
-                <h4>가설 주도 접근</h4>
-                <p>핵심 가설을 먼저 세우고, 데이터와 근거로 체계적으로 검증합니다</p>
-              </div>
+              <div><h4 data-i18n="mck_m2_title">가설 주도 접근</h4><p data-i18n="mck_m2_desc">핵심 가설을 먼저 세우고, 데이터와 근거로 체계적으로 검증합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot"></div>
-              <div>
-                <h4>피라미드 원칙</h4>
-                <p>결론을 먼저 제시하고 근거로 뒷받침하는 구조화된 커뮤니케이션</p>
-              </div>
+              <div><h4 data-i18n="mck_m3_title">피라미드 원칙</h4><p data-i18n="mck_m3_desc">결론을 먼저 제시하고 근거로 뒷받침하는 구조화된 커뮤니케이션</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot"></div>
-              <div>
-                <h4>이슈 트리</h4>
-                <p>복잡한 문제를 검증 가능한 하위 질문으로 체계적으로 분해합니다</p>
-              </div>
+              <div><h4 data-i18n="mck_m4_title">이슈 트리</h4><p data-i18n="mck_m4_desc">복잡한 문제를 검증 가능한 하위 질문으로 체계적으로 분해합니다</p></div>
             </div>
           </div>
         </div>
@@ -196,38 +220,25 @@
               <img src="images/bcg.svg" alt="BCG" style="max-width: 85px; height: auto; filter: brightness(0) invert(1);" />
             </div>
             <div>
-              
-              <span class="mbb-tagline">전략 프레임워크 설계</span>
+              <span class="mbb-tagline" data-i18n="bcg_tagline">전략 프레임워크 설계</span>
             </div>
           </div>
           <div class="mbb-methods">
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bcg"></div>
-              <div>
-                <h4>맞춤 프레임워크 선택</h4>
-                <p>사업 유형과 결정 상황에 따라 최적의 분석 프레임워크를 조합합니다</p>
-              </div>
+              <div><h4 data-i18n="bcg_m1_title">맞춤 프레임워크 선택</h4><p data-i18n="bcg_m1_desc">사업 유형과 결정 상황에 따라 최적의 분석 프레임워크를 조합합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bcg"></div>
-              <div>
-                <h4>경쟁 포지셔닝 분석</h4>
-                <p>시장 내 경쟁 구조와 차별화 기회를 체계적으로 평가합니다</p>
-              </div>
+              <div><h4 data-i18n="bcg_m2_title">경쟁 포지셔닝 분석</h4><p data-i18n="bcg_m2_desc">시장 내 경쟁 구조와 차별화 기회를 체계적으로 평가합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bcg"></div>
-              <div>
-                <h4>성장 전략 수립</h4>
-                <p>시장 매력도와 역량을 교차 분석하여 성장 경로를 설계합니다</p>
-              </div>
+              <div><h4 data-i18n="bcg_m3_title">성장 전략 수립</h4><p data-i18n="bcg_m3_desc">시장 매력도와 역량을 교차 분석하여 성장 경로를 설계합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bcg"></div>
-              <div>
-                <h4>시나리오 플래닝</h4>
-                <p>다양한 가정 하의 시나리오를 비교하여 최적 전략을 도출합니다</p>
-              </div>
+              <div><h4 data-i18n="bcg_m4_title">시나리오 플래닝</h4><p data-i18n="bcg_m4_desc">다양한 가정 하의 시나리오를 비교하여 최적 전략을 도출합니다</p></div>
             </div>
           </div>
         </div>
@@ -239,38 +250,25 @@
               <img src="images/bain.svg" alt="Bain" style="filter: brightness(0) invert(1);" />
             </div>
             <div>
-              
-              <span class="mbb-tagline">실행 중심 권고</span>
+              <span class="mbb-tagline" data-i18n="bain_tagline">실행 중심 권고</span>
             </div>
           </div>
           <div class="mbb-methods">
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bain"></div>
-              <div>
-                <h4>결과 지향적 권고</h4>
-                <p>분석에서 그치지 않고, 즉시 실행 가능한 구체적 행동 계획을 제시합니다</p>
-              </div>
+              <div><h4 data-i18n="bain_m1_title">결과 지향적 권고</h4><p data-i18n="bain_m1_desc">분석에서 그치지 않고, 즉시 실행 가능한 구체적 행동 계획을 제시합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bain"></div>
-              <div>
-                <h4>단위 경제학 분석</h4>
-                <p>매출·비용·마진을 단위별로 분해하여 수익 구조의 본질을 파악합니다</p>
-              </div>
+              <div><h4 data-i18n="bain_m2_title">단위 경제학 분석</h4><p data-i18n="bain_m2_desc">매출·비용·마진을 단위별로 분해하여 수익 구조의 본질을 파악합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bain"></div>
-              <div>
-                <h4>고객 중심 전략</h4>
-                <p>고객의 실제 행동과 구매 결정 과정을 기반으로 전략을 수립합니다</p>
-              </div>
+              <div><h4 data-i18n="bain_m3_title">고객 중심 전략</h4><p data-i18n="bain_m3_desc">고객의 실제 행동과 구매 결정 과정을 기반으로 전략을 수립합니다</p></div>
             </div>
             <div class="mbb-method">
               <div class="mbb-method-dot mbb-dot-bain"></div>
-              <div>
-                <h4>KPI와 중단 조건</h4>
-                <p>성과를 측정할 지표와 철수 기준을 명확히 설정합니다</p>
-              </div>
+              <div><h4 data-i18n="bain_m4_title">KPI와 중단 조건</h4><p data-i18n="bain_m4_desc">성과를 측정할 지표와 철수 기준을 명확히 설정합니다</p></div>
             </div>
           </div>
         </div>
@@ -290,13 +288,10 @@
               <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone Logo" style="height: 46px; margin-bottom: 0;" />
             </div>
             <div>
-              <span class="mbb-tagline">국가별·사업별 맞춤 최적화</span>
+              <span class="mbb-tagline" data-i18n="localize_tagline">국가별·사업별 맞춤 최적화</span>
             </div>
           </div>
-          <p><strong>
-            동일한 프레임워크라도 국가의 규제 환경, 시장 구조, 산업 특성에 따라 적용 방식이 달라야 합니다.
-            Hillstone Partners의 지난 10여년간 1,000개 이상의 국내 기업 컨설팅 데이터를 바탕으로 대한민국의 법률·규제·시장 상황에 맞게 커스터마이즈된 분석을 제공합니다.
-          </strong></p>
+          <p data-i18n="localize_desc"><strong>동일한 프레임워크라도 국가의 규제 환경, 시장 구조, 산업 특성에 따라 적용 방식이 달라야 합니다. Hillstone Partners의 지난 10여년간 1,000개 이상의 국내 기업 컨설팅 데이터를 바탕으로 대한민국의 법률·규제·시장 상황에 맞게 커스터마이즈된 분석을 제공합니다.</strong></p>
           <div class="localize-tags history-tags">
             <span>창업진흥원 대학투자 표준모델 개발</span>
             <span>경기과학기술진흥원, 대전경제진흥원, KAIA(국토교통과학진흥원), 대구창조경제 혁신센터, 서강대학교, 동국대학교, 대구 C-LAB, 벤처 스타트업 캐스팅페어 창업기업 심사</span>
@@ -312,14 +307,12 @@
   <section class="process-section section-dark" id="process">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">HOW IT WORKS</span>
-        <h2 class="section-title">
-          대화에서 시작하여<br />
-          <span class="gradient-text">전략 보고서</span>로 완성됩니다
+        <span class="section-label" data-i18n="process_label">HOW IT WORKS</span>
+        <h2 class="section-title" data-i18n="process_title">
+          대화에서 시작하여<br /><span class="gradient-text">전략 보고서</span>로 완성됩니다
         </h2>
-        <p class="section-desc">
-          복잡한 사업 분석을 6단계의 체계적인 과정으로 진행합니다.<br />
-          각 단계에서 확보된 정보와 근거가 다음 단계의 분석을 더 정확하게 만듭니다.
+        <p class="section-desc" data-i18n="process_desc">
+          복잡한 사업 분석을 6단계의 체계적인 과정으로 진행합니다.<br />각 단계에서 확보된 정보와 근거가 다음 단계의 분석을 더 정확하게 만듭니다.
         </p>
       </div>
 
@@ -331,22 +324,20 @@
             <div class="step-line"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge">약 10분</div>
-            <h3 class="step-title">사업에 대해 이야기해 주세요</h3>
-            <p class="step-desc">
-              10여개의 핵심 질문을 통해 사업의 전체 그림을 파악합니다.
-              어떤 문제를 해결하려는지, 누구를 위한 것인지, 어떤 환경에서 운영되는지 —
-              사업을 이해하기 위한 가장 중요한 정보부터 하나씩 여쭤봅니다.
+            <div class="step-badge" data-i18n="step1_badge">약 10분</div>
+            <h3 class="step-title" data-i18n="step1_title">사업에 대해 이야기해 주세요</h3>
+            <p class="step-desc" data-i18n="step1_desc">
+              10여개의 핵심 질문을 통해 사업의 전체 그림을 파악합니다. 어떤 문제를 해결하려는지, 누구를 위한 것인지, 어떤 환경에서 운영되는지 — 사업을 이해하기 위한 가장 중요한 정보부터 하나씩 여쭤봅니다.
             </p>
             <div class="step-details">
-              <div class="detail-chip">사업 목적과 해결할 문제</div>
-              <div class="detail-chip">제품·서비스의 핵심</div>
-              <div class="detail-chip">목표 고객</div>
-              <div class="detail-chip">시장과 지역 범위</div>
-              <div class="detail-chip">현재 진행 단계</div>
-              <div class="detail-chip">수익 구조</div>
-              <div class="detail-chip">보유 자원과 제약</div>
-              <div class="detail-chip">성공 기준과 위험 요소</div>
+              <div class="detail-chip" data-i18n="step1_chip1">사업 목적과 해결할 문제</div>
+              <div class="detail-chip" data-i18n="step1_chip2">제품·서비스의 핵심</div>
+              <div class="detail-chip" data-i18n="step1_chip3">목표 고객</div>
+              <div class="detail-chip" data-i18n="step1_chip4">시장과 지역 범위</div>
+              <div class="detail-chip" data-i18n="step1_chip5">현재 진행 단계</div>
+              <div class="detail-chip" data-i18n="step1_chip6">수익 구조</div>
+              <div class="detail-chip" data-i18n="step1_chip7">보유 자원과 제약</div>
+              <div class="detail-chip" data-i18n="step1_chip8">성공 기준과 위험 요소</div>
             </div>
           </div>
         </div>
@@ -358,32 +349,17 @@
             <div class="step-line"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge">자동 수행</div>
-            <h3 class="step-title">사업 유형에 맞는 분석 구조를 설계합니다</h3>
-            <p class="step-desc">
-              답변을 바탕으로 사업의 유형과 핵심 쟁점을 파악하고,
-              가장 적합한 분석 프레임워크를 선택합니다.
-              신시장 진출, 신규 서비스, 수익성 개선, 규제 고위험 사업 등
-              사업의 성격에 따라 분석의 초점과 구조가 달라집니다.
+            <div class="step-badge" data-i18n="step2_badge">자동 수행</div>
+            <h3 class="step-title" data-i18n="step2_title">사업 유형에 맞는 분석 구조를 설계합니다</h3>
+            <p class="step-desc" data-i18n="step2_desc">
+              답변을 바탕으로 사업의 유형과 핵심 쟁점을 파악하고, 가장 적합한 분석 프레임워크를 선택합니다. 신시장 진출, 신규 서비스, 수익성 개선, 규제 고위험 사업 등 사업의 성격에 따라 분석의 초점과 구조가 달라집니다.
             </p>
             <div class="step-visual">
               <div class="framework-examples">
-                <div class="fw-item">
-                  <span class="fw-dot fw-dot-1"></span>
-                  <span>시장·고객·경쟁 구조</span>
-                </div>
-                <div class="fw-item">
-                  <span class="fw-dot fw-dot-2"></span>
-                  <span>수익·비용·단위 경제학</span>
-                </div>
-                <div class="fw-item">
-                  <span class="fw-dot fw-dot-3"></span>
-                  <span>규제·법률·운영 통제</span>
-                </div>
-                <div class="fw-item">
-                  <span class="fw-dot fw-dot-4"></span>
-                  <span>기술·자원·실행 역량</span>
-                </div>
+                <div class="fw-item"><span class="fw-dot fw-dot-1"></span><span data-i18n="fw1">시장·고객·경쟁 구조</span></div>
+                <div class="fw-item"><span class="fw-dot fw-dot-2"></span><span data-i18n="fw2">수익·비용·단위 경제학</span></div>
+                <div class="fw-item"><span class="fw-dot fw-dot-3"></span><span data-i18n="fw3">규제·법률·운영 통제</span></div>
+                <div class="fw-item"><span class="fw-dot fw-dot-4"></span><span data-i18n="fw4">기술·자원·실행 역량</span></div>
               </div>
             </div>
           </div>
@@ -396,20 +372,18 @@
             <div class="step-line"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge">자동 수행</div>
-            <h3 class="step-title">검증이 필요한 핵심 가설을 수립합니다</h3>
-            <p class="step-desc">
-              분석 구조를 바탕으로, 사업 성공에 가장 큰 영향을 미치는 핵심 가설을 도출합니다.
-              각 가설에는 <strong>"어떤 조건이 확인되면 이 가설이 틀렸다고 판단할 수 있는지"</strong>까지
-              명확하게 정의합니다. 이를 통해 분석이 원하는 결론으로 치우치지 않도록 합니다.
+            <div class="step-badge" data-i18n="step3_badge">자동 수행</div>
+            <h3 class="step-title" data-i18n="step3_title">검증이 필요한 핵심 가설을 수립합니다</h3>
+            <p class="step-desc" data-i18n="step3_desc">
+              분석 구조를 바탕으로, 사업 성공에 가장 큰 영향을 미치는 핵심 가설을 도출합니다. 각 가설에는 <strong>"어떤 조건이 확인되면 이 가설이 틀렸다고 판단할 수 있는지"</strong>까지 명확하게 정의합니다. 이를 통해 분석이 원하는 결론으로 치우치지 않도록 합니다.
             </p>
             <div class="hypothesis-example">
               <div class="hypo-card">
-                <div class="hypo-label">핵심 가설 예시</div>
-                <p class="hypo-text">"직접 자금 수탁을 배제한 정보 제공 모델이 초기 출시 방식으로 더 적합하다"</p>
+                <div class="hypo-label" data-i18n="hypo_label">핵심 가설 예시</div>
+                <p class="hypo-text" data-i18n="hypo_text">"직접 자금 수탁을 배제한 정보 제공 모델이 초기 출시 방식으로 더 적합하다"</p>
                 <div class="hypo-meta">
-                  <span class="hypo-tag">검증 대상</span>
-                  <span class="hypo-tag hypo-tag-alt">반증 조건 포함</span>
+                  <span class="hypo-tag" data-i18n="hypo_tag1">검증 대상</span>
+                  <span class="hypo-tag hypo-tag-alt" data-i18n="hypo_tag2">반증 조건 포함</span>
                 </div>
               </div>
             </div>
@@ -423,34 +397,31 @@
             <div class="step-line"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge">자동 수행</div>
-            <h3 class="step-title">관련 시장, 규제, 경쟁 정보를 직접 조사합니다</h3>
-            <p class="step-desc">
-              가설을 검증하기 위해 필요한 외부 정보를 직접 조사합니다.
-              법령·규제기관 자료, 기업 공시, 산업 통계, 시장 보고서 등
-              <strong>신뢰할 수 있는 출처</strong>를 우선하며,
-              모든 조사 결과에 출처와 기준일을 기록합니다.
+            <div class="step-badge" data-i18n="step4_badge">자동 수행</div>
+            <h3 class="step-title" data-i18n="step4_title">관련 시장, 규제, 경쟁 정보를 직접 조사합니다</h3>
+            <p class="step-desc" data-i18n="step4_desc">
+              가설을 검증하기 위해 필요한 외부 정보를 직접 조사합니다. 법령·규제기관 자료, 기업 공시, 산업 통계, 시장 보고서 등 <strong>신뢰할 수 있는 출처</strong>를 우선하며, 모든 조사 결과에 출처와 기준일을 기록합니다.
             </p>
             <div class="source-priority">
               <div class="source-item">
                 <div class="source-bar" style="--w: 100%"></div>
-                <span class="source-label">법령·규제기관·정부 데이터</span>
-                <span class="source-tier">최우선</span>
+                <span class="source-label" data-i18n="src1_label">법령·규제기관·정부 데이터</span>
+                <span class="source-tier" data-i18n="src1_tier">최우선</span>
               </div>
               <div class="source-item">
                 <div class="source-bar" style="--w: 85%"></div>
-                <span class="source-label">기업 공시·공식 통계</span>
-                <span class="source-tier">높음</span>
+                <span class="source-label" data-i18n="src2_label">기업 공시·공식 통계</span>
+                <span class="source-tier" data-i18n="src2_tier">높음</span>
               </div>
               <div class="source-item">
                 <div class="source-bar" style="--w: 70%"></div>
-                <span class="source-label">학술 논문·산업 협회</span>
-                <span class="source-tier">보통</span>
+                <span class="source-label" data-i18n="src3_label">학술 논문·산업 협회</span>
+                <span class="source-tier" data-i18n="src3_tier">보통</span>
               </div>
               <div class="source-item">
                 <div class="source-bar" style="--w: 55%"></div>
-                <span class="source-label">신뢰도 높은 조사기관·언론</span>
-                <span class="source-tier">참고</span>
+                <span class="source-label" data-i18n="src4_label">신뢰도 높은 조사기관·언론</span>
+                <span class="source-tier" data-i18n="src4_tier">참고</span>
               </div>
             </div>
           </div>
@@ -463,30 +434,27 @@
             <div class="step-line"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge">약 5~10분</div>
-            <h3 class="step-title">꼭 필요한 것만 추가로 확인합니다</h3>
-            <p class="step-desc">
-              조사 결과를 반영하여, 아직 확인되지 않은 핵심 쟁점에 대해서만 추가 질문을 드립니다.
-              외부에서 확인 가능한 정보는 직접 조사하고,
-              <strong>사업 당사자만 알 수 있는 정보만</strong> 여쭤봅니다.
-              각 질문에는 왜 이 정보가 필요한지 함께 안내합니다.
+            <div class="step-badge" data-i18n="step5_badge">약 5~10분</div>
+            <h3 class="step-title" data-i18n="step5_title">꼭 필요한 것만 추가로 확인합니다</h3>
+            <p class="step-desc" data-i18n="step5_desc">
+              조사 결과를 반영하여, 아직 확인되지 않은 핵심 쟁점에 대해서만 추가 질문을 드립니다. 외부에서 확인 가능한 정보는 직접 조사하고, <strong>사업 당사자만 알 수 있는 정보만</strong> 여쭤봅니다. 각 질문에는 왜 이 정보가 필요한지 함께 안내합니다.
             </p>
             <div class="followup-features">
               <div class="ff-item">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2L3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>한 번에 하나씩, 구체적인 질문</span>
+                <span data-i18n="ff1">한 번에 하나씩, 구체적인 질문</span>
               </div>
               <div class="ff-item">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2L3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>"모름" 또는 "자료 없음" 선택 가능</span>
+                <span data-i18n="ff2">"모름" 또는 "자료 없음" 선택 가능</span>
               </div>
               <div class="ff-item">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2L3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>질문 이유와 맥락을 함께 안내</span>
+                <span data-i18n="ff3">질문 이유와 맥락을 함께 안내</span>
               </div>
               <div class="ff-item">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.7 5L7.5 14.2L3.3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span>이전 답변 수정 언제든 가능</span>
+                <span data-i18n="ff4">이전 답변 수정 언제든 가능</span>
               </div>
             </div>
           </div>
@@ -499,13 +467,10 @@
             <div class="step-line-end"></div>
           </div>
           <div class="step-content">
-            <div class="step-badge step-badge-final">최종 결과</div>
-            <h3 class="step-title">전략 컨설팅 보고서가 완성됩니다</h3>
-            <p class="step-desc">
-              충분한 근거가 확보되면, 보고서 준비 상태를 확인한 뒤
-              최종 컨설팅 보고서를 생성합니다.
-              미확인 사항이 남아 있더라도 이를 명확하게 표시하여,
-              보고서의 결론이 어디까지 확인된 것이고 어디부터가 가정인지 투명하게 전달합니다.
+            <div class="step-badge step-badge-final" data-i18n="step6_badge">최종 결과</div>
+            <h3 class="step-title" data-i18n="step6_title">전략 컨설팅 보고서가 완성됩니다</h3>
+            <p class="step-desc" data-i18n="step6_desc">
+              충분한 근거가 확보되면, 보고서 준비 상태를 확인한 뒤 최종 컨설팅 보고서를 생성합니다. 미확인 사항이 남아 있더라도 이를 명확하게 표시하여, 보고서의 결론이 어디까지 확인된 것이고 어디부터가 가정인지 투명하게 전달합니다.
             </p>
           </div>
         </div>
@@ -517,86 +482,55 @@
   <section class="analysis-section section-dark" id="analysis">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">ANALYSIS CAPABILITIES</span>
-        <h2 class="section-title">
+        <span class="section-label" data-i18n="analysis_label">ANALYSIS CAPABILITIES</span>
+        <h2 class="section-title" data-i18n="analysis_title">
           사업의 <span class="gradient-text">모든 측면</span>을<br />빠짐없이 분석합니다
         </h2>
-        <p class="section-desc">
-          어떤 분석 프레임워크를 사용하든, 아래 10가지 핵심 분석 축을 기준으로<br />
-          누락된 관점이 없는지 체계적으로 점검합니다.
+        <p class="section-desc" data-i18n="analysis_desc">
+          어떤 분석 프레임워크를 사용하든, 아래 10가지 핵심 분석 축을 기준으로<br />누락된 관점이 없는지 체계적으로 점검합니다.
         </p>
       </div>
 
       <div class="axes-grid">
         <div class="axis-card fade-up" data-axis="1">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h4>고객 수요</h4>
-          <p>목표 고객이 실제로 이 서비스를 필요로 하는가, 지불 의사가 있는가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4 data-i18n="axis1_title">고객 수요</h4><p data-i18n="axis1_desc">목표 고객이 실제로 이 서비스를 필요로 하는가, 지불 의사가 있는가</p>
         </div>
         <div class="axis-card fade-up" data-axis="2">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h4>가치 제안</h4>
-          <p>경쟁 대안 대비 고객에게 제공하는 차별화된 가치는 무엇인가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <h4 data-i18n="axis2_title">가치 제안</h4><p data-i18n="axis2_desc">경쟁 대안 대비 고객에게 제공하는 차별화된 가치는 무엇인가</p>
         </div>
         <div class="axis-card fade-up" data-axis="3">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h4>시장 경쟁</h4>
-          <p>현재 시장 구조, 경쟁 강도, 진입 장벽은 어떠한가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h4 data-i18n="axis3_title">시장 경쟁</h4><p data-i18n="axis3_desc">현재 시장 구조, 경쟁 강도, 진입 장벽은 어떠한가</p>
         </div>
         <div class="axis-card fade-up" data-axis="4">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          </div>
-          <h4>수익 경제성</h4>
-          <p>수익 모델은 지속 가능한가, 단위 경제학이 성립하는가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h4 data-i18n="axis4_title">수익 경제성</h4><p data-i18n="axis4_desc">수익 모델은 지속 가능한가, 단위 경제학이 성립하는가</p>
         </div>
         <div class="axis-card fade-up" data-axis="5">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h4>운영 역량</h4>
-          <p>서비스를 안정적으로 제공할 운영 체계와 프로세스가 준비되어 있는가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h4 data-i18n="axis5_title">운영 역량</h4><p data-i18n="axis5_desc">서비스를 안정적으로 제공할 운영 체계와 프로세스가 준비되어 있는가</p>
         </div>
         <div class="axis-card fade-up" data-axis="6">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-          </div>
-          <h4>기술·데이터</h4>
-          <p>필요한 기술 역량과 데이터 인프라가 확보 가능한가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+          <h4 data-i18n="axis6_title">기술·데이터</h4><p data-i18n="axis6_desc">필요한 기술 역량과 데이터 인프라가 확보 가능한가</p>
         </div>
         <div class="axis-card fade-up" data-axis="7">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h4>법률·규제</h4>
-          <p>관련 법규, 인허가, 규제 요건을 충족할 수 있는가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4 data-i18n="axis7_title">법률·규제</h4><p data-i18n="axis7_desc">관련 법규, 인허가, 규제 요건을 충족할 수 있는가</p>
         </div>
         <div class="axis-card fade-up" data-axis="8">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h4>실행 자원</h4>
-          <p>인력, 예산, 파트너십 등 실행에 필요한 자원이 충분한가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h4 data-i18n="axis8_title">실행 자원</h4><p data-i18n="axis8_desc">인력, 예산, 파트너십 등 실행에 필요한 자원이 충분한가</p>
         </div>
         <div class="axis-card fade-up" data-axis="9">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <h4>위험·의존성</h4>
-          <p>사업 실패를 유발할 수 있는 핵심 위험과 외부 의존 요소는 무엇인가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <h4 data-i18n="axis9_title">위험·의존성</h4><p data-i18n="axis9_desc">사업 실패를 유발할 수 있는 핵심 위험과 외부 의존 요소는 무엇인가</p>
         </div>
         <div class="axis-card fade-up" data-axis="10">
-          <div class="axis-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <h4>성공 지표</h4>
-          <p>성공과 실패를 판단할 명확한 기준과 측정 방법이 있는가</p>
+          <div class="axis-icon-wrap"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <h4 data-i18n="axis10_title">성공 지표</h4><p data-i18n="axis10_desc">성공과 실패를 판단할 명확한 기준과 측정 방법이 있는가</p>
         </div>
       </div>
     </div>
@@ -607,211 +541,117 @@
     <div class="container">
       <div class="report-layout">
         <div class="report-info fade-up">
-          <span class="section-label">CONSULTING REPORT</span>
-          <h2 class="section-title">
-            결론부터 시작하고<br />
-            <span class="gradient-text">근거로 뒷받침</span>하는<br />
-            보고서
+          <span class="section-label" data-i18n="report_label">CONSULTING REPORT</span>
+          <h2 class="section-title" data-i18n="report_title">
+            결론부터 시작하고<br /><span class="gradient-text">근거로 뒷받침</span>하는<br />보고서
           </h2>
-          <p class="report-philosophy">
-            Hillstone Arena의 보고서는 McKinsey의 <strong>피라미드 구조 방식</strong>으로 작성됩니다.
-            가장 중요한 결론을 먼저 제시하고,
-            그 결론을 지지하는 근거를 단계적으로 펼칩니다.
-            모든 근거에는 출처가 명시되며,
-            확인된 사실과 전략적 추론을 명확히 구분합니다.
+          <p class="report-philosophy" data-i18n="report_philosophy">
+            Hillstone Arena의 보고서는 McKinsey의 <strong>피라미드 구조 방식</strong>으로 작성됩니다. 가장 중요한 결론을 먼저 제시하고, 그 결론을 지지하는 근거를 단계적으로 펼칩니다. 모든 근거에는 출처가 명시되며, 확인된 사실과 전략적 추론을 명확히 구분합니다.
           </p>
           <div class="pyramid-3d" style="margin: 40px auto; max-width: 500px; perspective: 800px;">
-            <!-- 레벨 1: 핵심 결론 (꼭대기) -->
             <div class="pyramid-level pyramid-l1-3d">
               <div class="pyramid-level-inner">
-                <span class="pyramid-label">핵심 결론</span>
+                <span class="pyramid-label" data-i18n="pyramid_l1">핵심 결론</span>
               </div>
             </div>
-            <!-- 레벨 2: 독립된 3대 근거 -->
             <div class="pyramid-level pyramid-l2-3d">
               <div class="pyramid-level-inner">
-                <span class="pyramid-label">독립된 3대 근거</span>
+                <span class="pyramid-label" data-i18n="pyramid_l2">독립된 3대 근거</span>
               </div>
             </div>
-            <!-- 레벨 3: 사실·외부 근거 (바닥) -->
             <div class="pyramid-level pyramid-l3-3d">
               <div class="pyramid-level-inner">
-                <span class="pyramid-label">사실 · 외부 근거 · 데이터 · 계산</span>
+                <span class="pyramid-label" data-i18n="pyramid_l3">사실 · 외부 근거 · 데이터 · 계산</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="report-sections fade-up delay-1">
-          <div class="report-card">
-            <div class="rc-num">01</div>
-            <div class="rc-body">
-              <h4>핵심 결론</h4>
-              <p>지금 내려야 할 가장 중요한 판단 한 문장</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">02</div>
-            <div class="rc-body">
-              <h4>상황·복잡성·핵심 질문·권고</h4>
-              <p>현재 상황, 왜 어려운지, 무엇을 결정해야 하는지, 어떻게 하면 되는지</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">03</div>
-            <div class="rc-body">
-              <h4>핵심 권고안</h4>
-              <p>최대 3개의 구체적이고 실행 가능한 전략 권고</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">04</div>
-            <div class="rc-body">
-              <h4>시장·고객·경쟁 분석</h4>
-              <p>검증된 데이터 기반의 시장 환경과 기회 분석</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">05</div>
-            <div class="rc-body">
-              <h4>수익 구조와 실행 가능성</h4>
-              <p>수익 모델의 지속 가능성과 경제성 검증</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">06</div>
-            <div class="rc-body">
-              <h4>위험 분석</h4>
-              <p>법률, 규제, 운영, 기술 측면의 잠재적 위험 요소</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">07</div>
-            <div class="rc-body">
-              <h4>검증된 가설과 반박된 가설</h4>
-              <p>어떤 가정이 확인되었고, 어떤 가정이 틀렸는지</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">08</div>
-            <div class="rc-body">
-              <h4>30·60·90일 실행 계획</h4>
-              <p>즉시 실행할 수 있는 단계별 행동 계획과 중단 조건</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">09</div>
-            <div class="rc-body">
-              <h4>미확인 사항과 제한사항</h4>
-              <p>무엇이 아직 확인되지 않았는지 투명하게 공개</p>
-            </div>
-          </div>
-          <div class="report-card">
-            <div class="rc-num">10</div>
-            <div class="rc-body">
-              <h4>출처 및 근거 부록</h4>
-              <p>모든 분석의 근거가 된 자료와 출처 목록</p>
-            </div>
-          </div>
+          <div class="report-card"><div class="rc-num">01</div><div class="rc-body"><h4 data-i18n="rc01_title">핵심 결론</h4><p data-i18n="rc01_desc">지금 내려야 할 가장 중요한 판단 한 문장</p></div></div>
+          <div class="report-card"><div class="rc-num">02</div><div class="rc-body"><h4 data-i18n="rc02_title">상황·복잡성·핵심 질문·권고</h4><p data-i18n="rc02_desc">현재 상황, 왜 어려운지, 무엇을 결정해야 하는지, 어떻게 하면 되는지</p></div></div>
+          <div class="report-card"><div class="rc-num">03</div><div class="rc-body"><h4 data-i18n="rc03_title">핵심 권고안</h4><p data-i18n="rc03_desc">최대 3개의 구체적이고 실행 가능한 전략 권고</p></div></div>
+          <div class="report-card"><div class="rc-num">04</div><div class="rc-body"><h4 data-i18n="rc04_title">시장·고객·경쟁 분석</h4><p data-i18n="rc04_desc">검증된 데이터 기반의 시장 환경과 기회 분석</p></div></div>
+          <div class="report-card"><div class="rc-num">05</div><div class="rc-body"><h4 data-i18n="rc05_title">수익 구조와 실행 가능성</h4><p data-i18n="rc05_desc">수익 모델의 지속 가능성과 경제성 검증</p></div></div>
+          <div class="report-card"><div class="rc-num">06</div><div class="rc-body"><h4 data-i18n="rc06_title">위험 분석</h4><p data-i18n="rc06_desc">법률, 규제, 운영, 기술 측면의 잠재적 위험 요소</p></div></div>
+          <div class="report-card"><div class="rc-num">07</div><div class="rc-body"><h4 data-i18n="rc07_title">검증된 가설과 반박된 가설</h4><p data-i18n="rc07_desc">어떤 가정이 확인되었고, 어떤 가정이 틀렸는지</p></div></div>
+          <div class="report-card"><div class="rc-num">08</div><div class="rc-body"><h4 data-i18n="rc08_title">30·60·90일 실행 계획</h4><p data-i18n="rc08_desc">즉시 실행할 수 있는 단계별 행동 계획과 중단 조건</p></div></div>
+          <div class="report-card"><div class="rc-num">09</div><div class="rc-body"><h4 data-i18n="rc09_title">미확인 사항과 제한사항</h4><p data-i18n="rc09_desc">무엇이 아직 확인되지 않았는지 투명하게 공개</p></div></div>
+          <div class="report-card"><div class="rc-num">10</div><div class="rc-body"><h4 data-i18n="rc10_title">출처 및 근거 부록</h4><p data-i18n="rc10_desc">모든 분석의 근거가 된 자료와 출처 목록</p></div></div>
         </div>
       </div>
     </div>
   </section>
 
-
-
   <!-- ─── 활용 사례 ─── -->
   <section class="cases-section section-dark" id="cases">
     <div class="container">
       <div class="section-header fade-up">
-        <span class="section-label">USE CASES</span>
-        <h2 class="section-title">
+        <span class="section-label" data-i18n="cases_label">USE CASES</span>
+        <h2 class="section-title" data-i18n="cases_title">
           다양한 사업에<br /><span class="gradient-text">맞춤 분석</span>을 제공합니다
         </h2>
       </div>
 
       <div class="cases-grid">
         <div class="case-card fade-up">
-          <div class="case-tag">신시장 진출</div>
-          <h3>해외 시장 진출을 검토 중인 사업</h3>
-          <p>
-            새로운 국가나 지역에 진출할 때 필요한 시장 구조, 규제 환경, 경쟁 상황,
-            현지 고객 수요를 체계적으로 분석합니다.
-          </p>
+          <div class="case-tag" data-i18n="case1_tag">신시장 진출</div>
+          <h3 data-i18n="case1_title">해외 시장 진출을 검토 중인 사업</h3>
+          <p data-i18n="case1_desc">새로운 국가나 지역에 진출할 때 필요한 시장 구조, 규제 환경, 경쟁 상황, 현지 고객 수요를 체계적으로 분석합니다.</p>
           <div class="case-focus">
-            <span>시장·고객·경쟁</span>
-            <span>규제·인허가</span>
-            <span>현지화 전략</span>
+            <span data-i18n="case1_f1">시장·고객·경쟁</span>
+            <span data-i18n="case1_f2">규제·인허가</span>
+            <span data-i18n="case1_f3">현지화 전략</span>
           </div>
         </div>
-
         <div class="case-card fade-up delay-1">
-          <div class="case-tag">신규 서비스</div>
-          <h3>새로운 제품이나 서비스를 준비 중인 사업</h3>
-          <p>
-            아이디어 단계부터 출시까지, 고객 문제의 실재성, 시장 규모,
-            대체재와의 차별점, 수익 모델의 지속 가능성을 검증합니다.
-          </p>
+          <div class="case-tag" data-i18n="case2_tag">신규 서비스</div>
+          <h3 data-i18n="case2_title">새로운 제품이나 서비스를 준비 중인 사업</h3>
+          <p data-i18n="case2_desc">아이디어 단계부터 출시까지, 고객 문제의 실재성, 시장 규모, 대체재와의 차별점, 수익 모델의 지속 가능성을 검증합니다.</p>
           <div class="case-focus">
-            <span>고객 문제 검증</span>
-            <span>시장 규모</span>
-            <span>수익 모델</span>
+            <span data-i18n="case2_f1">고객 문제 검증</span>
+            <span data-i18n="case2_f2">시장 규모</span>
+            <span data-i18n="case2_f3">수익 모델</span>
           </div>
         </div>
-
         <div class="case-card fade-up delay-2">
-          <div class="case-tag">수익성 개선</div>
-          <h3>매출은 있지만 수익성이 낮은 사업</h3>
-          <p>
-            수익과 비용의 구조를 분해하고, 객단가·고정비·변동비·회전율 등
-            핵심 레버를 찾아 개선 가능성을 분석합니다.
-          </p>
+          <div class="case-tag" data-i18n="case3_tag">수익성 개선</div>
+          <h3 data-i18n="case3_title">매출은 있지만 수익성이 낮은 사업</h3>
+          <p data-i18n="case3_desc">수익과 비용의 구조를 분해하고, 객단가·고정비·변동비·회전율 등 핵심 레버를 찾아 개선 가능성을 분석합니다.</p>
           <div class="case-focus">
-            <span>원가 구조 분석</span>
-            <span>단위 경제학</span>
-            <span>가격 전략</span>
+            <span data-i18n="case3_f1">원가 구조 분석</span>
+            <span data-i18n="case3_f2">단위 경제학</span>
+            <span data-i18n="case3_f3">가격 전략</span>
           </div>
         </div>
-
         <div class="case-card fade-up delay-3">
-          <div class="case-tag">규제 고위험</div>
-          <h3>금융, 가상자산, 의료 등 규제가 중요한 사업</h3>
-          <p>
-            관련 법령, 규제기관 요건, 인허가 절차, 금지 행위를 우선 파악하고,
-            합법적으로 사업을 운영할 수 있는 구조를 분석합니다.
-          </p>
+          <div class="case-tag" data-i18n="case4_tag">규제 고위험</div>
+          <h3 data-i18n="case4_title">금융, 가상자산, 의료 등 규제가 중요한 사업</h3>
+          <p data-i18n="case4_desc">관련 법령, 규제기관 요건, 인허가 절차, 금지 행위를 우선 파악하고, 합법적으로 사업을 운영할 수 있는 구조를 분석합니다.</p>
           <div class="case-focus">
-            <span>규제 분석</span>
-            <span>인허가 요건</span>
-            <span>운영 통제</span>
+            <span data-i18n="case4_f1">규제 분석</span>
+            <span data-i18n="case4_f2">인허가 요건</span>
+            <span data-i18n="case4_f3">운영 통제</span>
           </div>
         </div>
-
         <div class="case-card fade-up delay-4">
-          <div class="case-tag">투자·M&A</div>
-          <h3>투자 유치 및 인수합병을 준비 중인 사업</h3>
-          <p>
-            기업 가치 평가(밸류에이션) 리스크, 재무·비재무적 실사 관점,
-            피투자사/대상 기업의 성장 동력과 구조적 위협 요소를 검증합니다.
-          </p>
+          <div class="case-tag" data-i18n="case5_tag">투자·M&A</div>
+          <h3 data-i18n="case5_title">투자 유치 및 인수합병을 준비 중인 사업</h3>
+          <p data-i18n="case5_desc">기업 가치 평가(밸류에이션) 리스크, 재무·비재무적 실사 관점, 피투자사/대상 기업의 성장 동력과 구조적 위협 요소를 검증합니다.</p>
           <div class="case-focus">
-            <span>밸류에이션 검증</span>
-            <span>실사 관점</span>
-            <span>M&A 시너지</span>
+            <span data-i18n="case5_f1">밸류에이션 검증</span>
+            <span data-i18n="case5_f2">실사 관점</span>
+            <span data-i18n="case5_f3">M&A 시너지</span>
           </div>
         </div>
-
         <div class="case-card fade-up delay-5">
-          <div class="case-tag">사업 피벗</div>
-          <h3>기존 사업 모델 재편 및 피벗을 고민 중인 사업</h3>
-          <p>
-            기존 자원과 핵심 역량을 바탕으로 새로운 성장 엔진을 발굴하고,
-            시행착오와 리스크를 최소화하는 단계별 사업 전환 전략을 분석합니다.
-          </p>
+          <div class="case-tag" data-i18n="case6_tag">사업 피벗</div>
+          <h3 data-i18n="case6_title">기존 사업 모델 재편 및 피벗을 고민 중인 사업</h3>
+          <p data-i18n="case6_desc">기존 자원과 핵심 역량을 바탕으로 새로운 성장 엔진을 발굴하고, 시행착오와 리스크를 최소화하는 단계별 사업 전환 전략을 분석합니다.</p>
           <div class="case-focus">
-            <span>역량 재배치</span>
-            <span>신성장 동력</span>
-            <span>리스크 최소화</span>
+            <span data-i18n="case6_f1">역량 재배치</span>
+            <span data-i18n="case6_f2">신성장 동력</span>
+            <span data-i18n="case6_f3">리스크 최소화</span>
           </div>
         </div>
       </div>
@@ -821,33 +661,27 @@
   <!-- ─── CTA ─── -->
   <section class="cta-section section-dark" id="cta">
     <div class="cta-glow"></div>
-    <!-- 단일 wrapper로 세로 배치 강제 -->
     <div class="cta-wrapper">
       <div class="container">
         <div class="cta-content fade-up">
-          <h2 class="cta-title">
-            사업의 핵심 질문에 대한<br />
-            <span class="gradient-text">구조화된 답</span>을 받아보세요
+          <h2 class="cta-title" data-i18n="cta_title">
+            사업의 핵심 질문에 대한<br /><span class="gradient-text">구조화된 답</span>을 받아보세요
           </h2>
-          <p class="cta-desc">
+          <p class="cta-desc" data-i18n="cta_desc">
             10여개의 질문으로 시작합니다. 약 15~20분이면 충분합니다.
           </p>
           <a href="#" class="btn btn-primary btn-xl">
-            <span>컨설팅 요청하기</span>
+            <span data-i18n="cta_btn">컨설팅 요청하기</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-
-          <!-- 알려드립니다 (CTA 버튼 아래, 중앙 정렬) -->
           <div class="disclaimer-card fade-up" style="max-width: 580px; margin: 40px auto 0; flex-direction: column; align-items: center; text-align: center;">
             <div class="disclaimer-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             </div>
             <div class="disclaimer-text" style="text-align: center;">
-              <h4>알려 드립니다</h4>
-              <p>
-                Hillstone Arena AI 컨설팅은 의사결정에 도움을 드리는 분석 보조 도구입니다.
-                법률, 의료, 투자 영역의 확정적인 전문 자문을 대체하지 않으며,
-                중요한 결정에는 반드시 해당 분야 전문가의 검토를 받으시기를 권합니다.
+              <h4 data-i18n="disclaimer_title">알려 드립니다</h4>
+              <p data-i18n="disclaimer_desc">
+                Hillstone Arena AI 컨설팅은 의사결정에 도움을 드리는 분석 보조 도구입니다. 법률, 의료, 투자 영역의 확정적인 전문 자문을 대체하지 않으며, 중요한 결정에는 반드시 해당 분야 전문가의 검토를 받으시기를 권합니다.
               </p>
             </div>
           </div>
@@ -864,31 +698,32 @@
           <div class="footer-logo">
             <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone Logo" height="40" />
           </div>
-          <p class="footer-tagline">데이터 기반 전략 컨설팅</p>
+          <p class="footer-tagline" data-i18n="footer_tagline">데이터 기반 전략 컨설팅</p>
         </div>
         <div class="footer-links">
           <div class="footer-col">
-            <h5>서비스</h5>
-            <a href="#process">진행 방식</a>
-            <a href="#analysis">분석 역량</a>
-            <a href="#report">보고서</a>
-            <a href="#cases">활용 사례</a>
+            <h5 data-i18n="footer_service">서비스</h5>
+            <a href="#process"  data-i18n="footer_process">진행 방식</a>
+            <a href="#analysis" data-i18n="footer_analysis">분석 역량</a>
+            <a href="#report"   data-i18n="footer_report">보고서</a>
+            <a href="#cases"    data-i18n="footer_cases">활용 사례</a>
           </div>
           <div class="footer-col">
-            <h5>지원</h5>
-            <a href="faq.html">자주 묻는 질문</a>
-            <a href="terms.html">이용 약관</a>
-            <a href="privacy.html">개인정보 처리방침</a>
-            <a href="contact.html">문의하기</a>
+            <h5 data-i18n="footer_support">지원</h5>
+            <a href="faq.html"     data-i18n="footer_faq">자주 묻는 질문</a>
+            <a href="terms.html"   data-i18n="footer_terms">이용 약관</a>
+            <a href="privacy.html" data-i18n="footer_privacy">개인정보 처리방침</a>
+            <a href="contact.html" data-i18n="footer_contact">문의하기</a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Hillstone. All rights reserved.</p>
+        <p data-i18n="footer_copyright">&copy; 2026 Hillstone. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <script src="lang.js"></script>
   <script src="script.js?v=5"></script>
 </body>
 </html>
