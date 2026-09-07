@@ -17,7 +17,7 @@ const i18n = {
 
     /* ── 히어로 ── */
     hero_tagline_1:   "지금까지 경험해보지 못한",
-    hero_tagline_2:   "최고의 전략 컨설팅",
+    hero_tagline_2:   "최고의 AI 전략 컨설팅",
     hero_tagline_3:   "이 시작됩니다",
     hero_subtitle:    "글로벌 Top 3 컨설팅펌(McKinsey · BCG · Bain)의 핵심 방법론을 AI로 구현하여<br />기존 수천만 원 수준의 컨설팅 비용으로 얻을 수 있었던 독보적인 전략 인사이트를 제공합니다.",
     hero_cta_primary: "컨설팅 요청하기",
