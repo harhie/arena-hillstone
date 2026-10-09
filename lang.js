@@ -315,7 +315,7 @@ const i18n = {
     report_title: "Start with conclusions,<br />supported by <span class=\"gradient-text\">evidence</span>—<br />that's our report",
     report_philosophy: "Hillstone Arena reports follow McKinsey's <strong>Pyramid Structure</strong>. We present the most important conclusion first, then lay out supporting evidence in stages. Every piece of evidence is cited, and verified facts are clearly distinguished from strategic reasoning.",
     pyramid_l1:  "Core Conclusion",
-    pyramid_l2:  "3 Independent Supporting Arguments",
+    pyramid_l2:  "3 Supporting Arguments",
     pyramid_l3:  "Facts · External Evidence · Data · Calculations",
     rc01_title: "Core Conclusion",       rc01_desc: "The single most important judgment to make right now",
     rc02_title: "Situation · Complexity · Key Question · Recommendation", rc02_desc: "Current state, why it's difficult, what needs to be decided, and how to proceed",
