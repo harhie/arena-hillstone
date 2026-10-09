@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIP Private Closed Beta — Hillstone Arena AI Consulting</title>
+  <meta name="description" content="AI 기술 및 기업 컨설팅 분야에서 엄선된 20인 한정 프라이빗 베타 테스터 초대장입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=210" />
+  <style>
+    /* ─── VIP 베타 초대장 전용 맞춤 스타일 ─── */
+    .vip-page {
+      background: #0a0b0e;
+      color: #e2e8f0;
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* 상단 은은한 앰비언트 글로우 */
+    .vip-ambient-glow {
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(179, 27, 47, 0.22) 0%, rgba(123, 17, 35, 0.08) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .vip-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vip-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .vip-badge-exclusive {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(179, 27, 47, 0.15);
+      border: 1px solid rgba(212, 64, 80, 0.35);
+      color: #ff94a2;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .vip-badge-exclusive::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #ff4760;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff4760;
+    }
+
+    /* 레터 오프닝 섹션 */
+    .vip-letter-card {
+      background: linear-gradient(180deg, rgba(26, 28, 36, 0.85) 0%, rgba(16, 17, 23, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      padding: 52px 48px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(179, 27, 47, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vip-letter-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(212, 64, 80, 0.8), transparent);
+    }
+
+    .vip-title-tag {
+      color: #ff8595;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .vip-main-title {
+      font-size: clamp(1.85rem, 4vw, 2.65rem);
+      font-weight: 900;
+      line-height: 1.35;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    .vip-main-title .highlight {
+      background: linear-gradient(135deg, #ffffff 10%, #f0c0c8 50%, #d44050 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .vip-letter-body {
+      font-size: 1.05rem;
+      line-height: 1.95;
+      color: rgba(255, 255, 255, 0.85);
+      word-break: keep-all;
+    }
+
+    .vip-letter-body p {
+      margin-bottom: 22px;
+    }
+
+    .vip-letter-body strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .vip-letter-body .quote-box {
+      background: rgba(179, 27, 47, 0.08);
+      border-left: 3px solid #d44050;
+      padding: 18px 24px;
+      margin: 28px 0;
+      border-radius: 0 16px 16px 0;
+      font-size: 1.02rem;
+      color: #f1d5da;
+      line-height: 1.8;
+    }
+
+    /* 20인 한정 강조 배너 */
+    .vip-capacity-card {
+      background: linear-gradient(135deg, rgba(179, 27, 47, 0.18), rgba(26, 28, 36, 0.6));
+      border: 1px solid rgba(212, 64, 80, 0.35);
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 36px 0;
+    }
+
+    .vip-capacity-info h4 {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .vip-capacity-info p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .vip-capacity-pill {
+      background: linear-gradient(135deg, #d44050, #991325);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(153, 19, 37, 0.5);
+    }
+
+    /* 서비스 핵심 특징 3단 그리드 */
+    .vip-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .vip-feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .vip-feature-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(212, 64, 80, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .vip-feature-num {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #ff8595;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .vip-feature-card h4 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .vip-feature-card p {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* 특별 혜택 및 추천사 요청 카드 */
+    .vip-benefits-section {
+      background: linear-gradient(180deg, rgba(20, 21, 28, 0.9), rgba(12, 13, 17, 0.95));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 44px 40px;
+      margin: 40px 0;
+    }
+
+    .vip-benefits-section h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vip-benefit-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .vip-benefit-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .vip-benefit-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(179, 27, 47, 0.2);
+      border: 1px solid rgba(212, 64, 80, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff8595;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .vip-benefit-content h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .vip-benefit-content p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* 데스크톱 권장 안내 박스 */
+    .vip-desktop-notice {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .vip-desktop-notice svg {
+      color: #ff8595;
+      flex-shrink: 0;
+    }
+
+    .vip-desktop-notice p {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .vip-desktop-notice strong {
+      color: #ffffff;
+    }
+
+    /* 하단 CTA 영역 */
+    .vip-cta-block {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 20px;
+    }
+
+    .vip-btn-start {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #d44050 0%, #991325 100%);
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 18px 44px;
+      border-radius: 36px;
+      text-decoration: none;
+      box-shadow: 0 12px 35px rgba(153, 19, 37, 0.45);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .vip-btn-start:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 45px rgba(153, 19, 37, 0.65);
+      color: #ffffff;
+    }
+
+    .vip-cta-sub {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 16px;
+    }
+
+    /* 푸터 */
+    .vip-footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .vip-letter-card {
+        padding: 36px 24px;
+      }
+      .vip-benefits-section {
+        padding: 32px 20px;
+      }
+      .vip-capacity-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .vip-btn-start {
+        width: 100%;
+        padding: 16px 24px;
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body class="vip-page">
+  <div class="vip-ambient-glow"></div>
+
+  <div class="vip-container">
+    <!-- ─── 네비게이션 헤더 ─── -->
+    <header class="vip-nav">
+      <a href="https://arena.hillstone.cc" class="nav-logo" title="Hillstone Arena 메인으로">
+        <img src="https://raw.githubusercontent.com/harhie/siteimage/main/images/1778810982233_logo_hillstone_hw.webp" alt="Hillstone Logo" height="30" />
+      </a>
+      <span class="vip-badge-exclusive">VIP Closed Beta · 20인 한정</span>
+    </header>
+
+    <main>
+      <!-- ─── 레터 오프닝 섹션 ─── -->
+      <article class="vip-letter-card">
+        <span class="vip-title-tag">PRIVATE INVITATION</span>
+        <h1 class="vip-main-title">
+          존경하는 전문가분들께<br />
+          <span class="highlight">Hillstone Arena AI Consulting</span>의 첫 진단을 부탁드립니다
+        </h1>
+
+        <div class="vip-letter-body">
+          <p>
+            안녕하세요, <strong>Hillstone Partners</strong>입니다.
+          </p>
+          <p>
+            저희는 지난 수개월간 대형 전략 컨설팅펌(McKinsey · BCG · Bain)의 핵심 진단 프레임워크와 방법론을 AI 진단 엔진으로 정밀하게 구현한 <strong>Hillstone Arena AI Consulting</strong>을 개발해 왔습니다.
+          </p>
+          <p>
+            일반 대중에게 정식으로 선보이기에 앞서, <strong>AI 기술과 기업 전략 컨설팅 분야에서 제가 진심으로 깊이 존경하고 인정하며, 그 누구보다 날카롭고 의미 있는 시각을 가지신 분들</strong>께 가장 먼저 조심스럽게 조언을 청하고자 합니다.
+          </p>
+
+          <div class="quote-box">
+            "형식적인 칭찬보다는, <strong>'실제 비즈니스 현업에서 이 분석이 통하는지', '가설과 리서치의 깊이가 타당한지'</strong>에 대한 가장 냉철하고 솔직한 피드백을 듣고 싶습니다. 보내주시는 피드백 한마디가 이 서비스가 세상에 나아가기 위한 가장 결정적인 나침반이 됩니다."
+          </div>
+
+          <p>
+            단순 검색이나 챗봇 수준의 일반적인 AI 답변을 넘어, <strong>실제 수천만 원 상당의 전문 컨설팅 프로젝트에 버금가는 깊이 있는 전략 보고서</strong>가 도출되는지 직접 경험해 주시고 엄정한 평가를 내려주시면 감사하겠습니다.
+          </p>
+        </div>
+
+        <!-- 20인 한정 카드 -->
+        <div class="vip-capacity-card">
+          <div class="vip-capacity-info">
+            <h4>엄선된 20인 미만 한정 초대</h4>
+            <p>신뢰할 수 있는 소수의 최고 전문가분들만을 위해 비공개로 오픈된 프라이빗 베타입니다.</p>
+          </div>
+          <div class="vip-capacity-pill">Private Limited (20 Seats)</div>
+        </div>
+      </article>
+
+      <!-- ─── 서비스 핵심 아키텍처 ─── -->
+      <section style="margin: 48px 0;">
+        <h3 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin-bottom: 20px; text-align: center;">
+          Hillstone Arena의 3단계 진단 프로세스
+        </h3>
+        <div class="vip-features-grid">
+          <div class="vip-feature-card">
+            <span class="vip-feature-num">STEP 01</span>
+            <h4>심층 대화형 인터뷰<br />(약 15분)</h4>
+            <p>사업의 핵심 목표, 고객 세그먼트, 수익 구조, 운영 제약 조건 등 본질을 파고드는 10여 개의 구조화된 질문을 진행합니다.</p>
+          </div>
+          <div class="vip-feature-card">
+            <span class="vip-feature-num">STEP 02</span>
+            <h4>맞춤 가설 수립 및<br />실시간 데이터 리서치</h4>
+            <p>사업 유형에 맞는 분석 구조를 자동 설계하고, 시장·규제·경쟁사 공시 등 공신력 있는 외부 출처를 AI가 직접 조사·검증합니다.</p>
+          </div>
+          <div class="vip-feature-card">
+            <span class="vip-feature-num">STEP 03</span>
+            <h4>실행 중심 전략 보고서<br />즉시 산출</h4>
+            <p>피라미드 구조(결론 우선), 단위 경제학(LTV/CAC), 법률·인허가 위험 평가, 중단 조건(Kill Criteria)이 담긴 보고서를 제공합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 특별 혜택 및 추천사 요청 ─── -->
+      <section class="vip-benefits-section">
+        <h3>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          베타 테스터 분들께 드리는 약속과 정중한 부탁
+        </h3>
+
+        <div class="vip-benefit-item">
+          <div class="vip-benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="vip-benefit-content">
+            <h4>지속적인 피드백 제공 시, 전액 무료 지속 지원</h4>
+            <p>
+              본 서비스는 정식 런칭 후 유료 엔터프라이즈 컨설팅 모델로 운영될 예정입니다. 그러나 초기 제품 고도화를 위해 지속적으로 고견과 피드백을 나누어 주시는 분들께는 <strong>그 기간 동안 서비스를 일체 비용 없이 무료로 무제한 제공</strong>해 드리겠습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="vip-benefit-item">
+          <div class="vip-benefit-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="vip-benefit-content">
+            <h4>공식 추천 메시지(Testimonial) 게재의 영광</h4>
+            <p>
+              서비스를 직접 경험해 보신 후, 의미 있는 인사이트를 얻으셨거나 긍정적인 평가를 주신다면 <strong>공식 웹사이트와 소개 자료에 대표님의 소중한 추천 메시지와 성함을 게재할 수 있는 영광</strong>을 허락해 주시면 감사하겠습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── 데스크톱 권장 안내 ─── -->
+      <div class="vip-desktop-notice">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        <p>
+          <strong>[데스크톱 PC 접속 권장]</strong> 본 진단 인터페이스와 종합 보고서는 방대한 정량 데이터와 심층 분석 구조를 다루므로 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 최상의 진단 경험을 위해 가급적 PC로 테스트를 진행해 주시길 권장합니다.
+        </p>
+      </div>
+
+      <!-- ─── 시작하기 CTA ─── -->
+      <div class="vip-cta-block">
+        <a href="https://app.hillstone.cc" class="vip-btn-start" target="_blank" rel="noopener noreferrer">
+          <span>프라이빗 베타 진단 시작하기</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="vip-cta-sub">
+          별도의 복잡한 회원가입 절차 없이, 링크 접속 후 바로 진단 인터뷰를 시작하실 수 있습니다.
+        </p>
+      </div>
+    </main>
+
+    <!-- ─── 푸터 ─── -->
+    <footer class="vip-footer">
+      <p>Hillstone Partners · Hillstone Arena AI Consulting Private Beta</p>
+      <p style="margin-top: 6px; color: rgba(255, 255, 255, 0.3);">
+        테스트 중 문의사항이나 피드백은 언제든 편하게 1:1 메시지로 남겨주시면 감사하겠습니다.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
