@@ -405,6 +405,7 @@ function applyLang(lang) {
 
 /* 페이지 로드 시 저장된 언어 적용 */
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('arena_lang') || 'ko';
+  const saved = localStorage.getItem('arena_lang') || 'en';
   applyLang(saved);
 });
+
