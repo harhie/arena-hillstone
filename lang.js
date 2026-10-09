@@ -381,7 +381,7 @@ function applyLang(lang) {
   if (!t) return;
 
   // 현재 언어 저장
-  localStorage.setItem('arena_lang', lang);
+  localStorage.setItem('arena_lang_v2', lang);
 
   // html lang 속성
   document.documentElement.lang = lang === 'ko' ? 'ko' : 'en';
@@ -405,7 +405,7 @@ function applyLang(lang) {
 
 /* 페이지 로드 시 저장된 언어 적용 */
 document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('arena_lang') || 'en';
+  const saved = localStorage.getItem('arena_lang_v2') || 'en';
   applyLang(saved);
 });
 
