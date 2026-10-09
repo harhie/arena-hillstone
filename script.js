@@ -317,4 +317,53 @@ document.addEventListener('DOMContentLoaded', () => {
       card.classList.toggle('open');
     });
   });
+
+  // ─── 13. 데스크톱 최적화 안내 모달 ───
+  const desktopModal = document.getElementById('desktopModal');
+  const desktopModalConfirm = document.getElementById('desktopModalConfirm');
+  const desktopModalCancel = document.getElementById('desktopModalCancel');
+  let targetConsultingUrl = 'https://app.hillstone.cc';
+
+  function openDesktopModal(url) {
+    targetConsultingUrl = url || 'https://app.hillstone.cc';
+    if (desktopModal) {
+      desktopModal.classList.add('open');
+      desktopModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDesktopModal() {
+    if (desktopModal) {
+      desktopModal.classList.remove('open');
+      desktopModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // 모든 '컨설팅 요청하기' 링크에 클릭 이벤트 연결
+  document.querySelectorAll('a[href^="https://app.hillstone.cc"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openDesktopModal(link.href);
+    });
+  });
+
+  if (desktopModalConfirm) {
+    desktopModalConfirm.addEventListener('click', () => {
+      window.location.href = targetConsultingUrl;
+    });
+  }
+
+  if (desktopModalCancel) {
+    desktopModalCancel.addEventListener('click', closeDesktopModal);
+  }
+
+  if (desktopModal) {
+    desktopModal.addEventListener('click', (e) => {
+      if (e.target === desktopModal) {
+        closeDesktopModal();
+      }
+    });
+  }
 });

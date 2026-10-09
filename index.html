@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=209" />
+  <link rel="stylesheet" href="style.css?v=210" />
   <style>
     /* ── 언어 토글 버튼 ── */
     .lang-toggle {
@@ -723,7 +723,29 @@
     </div>
   </footer>
 
-  <script src="lang.js?v=209"></script>
-  <script src="script.js?v=5"></script>
+  <!-- ─── 데스크톱 최적화 안내 모달 ─── -->
+  <div class="desktop-modal-backdrop" id="desktopModal" aria-hidden="true">
+    <div class="desktop-modal-dialog">
+      <div class="desktop-modal-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div class="desktop-modal-badge" data-i18n="desktop_modal_badge">기기 최적화 안내</div>
+      <h3 class="desktop-modal-title" data-i18n="desktop_modal_title">본 서비스는 데스크톱(PC)에 최적화되어 있습니다</h3>
+      <p class="desktop-modal-desc" data-i18n="desktop_modal_desc">
+        Hillstone Arena의 심층 AI 전략 컨설팅 및 보고서는 <strong>데스크톱(PC) 환경에 최적화</strong>되어 있습니다.<br />모바일 환경에서는 일부 분석 차트 열람 및 입력이 제한될 수 있으므로, 원활한 진단을 위해 가급적 PC 접속을 권장합니다.
+      </p>
+      <div class="desktop-modal-actions">
+        <button type="button" class="btn btn-ghost desktop-modal-cancel" id="desktopModalCancel" data-i18n="desktop_modal_cancel">취소</button>
+        <button type="button" class="btn btn-primary desktop-modal-confirm" id="desktopModalConfirm" data-i18n="desktop_modal_confirm">계속 진행하기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="lang.js?v=210"></script>
+  <script src="script.js?v=210"></script>
 </body>
 </html>

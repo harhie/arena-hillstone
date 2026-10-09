@@ -26,6 +26,13 @@ const i18n = {
     stat_label_2:     "핵심 분석 축 커버리지",
     stat_label_3:     "보고서 분석 섹션",
 
+    /* ── 데스크톱 최적화 모달 ── */
+    desktop_modal_badge:   "기기 최적화 안내",
+    desktop_modal_title:   "본 서비스는 데스크톱(PC)에 최적화되어 있습니다",
+    desktop_modal_desc:    "Hillstone Arena의 심층 AI 전략 컨설팅 및 보고서는 <strong>데스크톱(PC) 환경에 최적화</strong>되어 있습니다.<br />모바일 환경에서는 일부 분석 차트 열람 및 입력이 제한될 수 있으므로, 원활한 진단을 위해 가급적 PC 접속을 권장합니다.",
+    desktop_modal_confirm: "계속 진행하기",
+    desktop_modal_cancel:  "취소",
+
     /* ── 문제 제기 ── */
     problem_label:    "WHY HILLSTONE ARENA",
     problem_title:    "사업 결정 앞에서<br /><span class=\"gradient-text\">이런 고민</span>을 하고 계신가요?",
@@ -209,6 +216,13 @@ const i18n = {
     stat_label_1:     "Global Top Consulting Firm Methodologies",
     stat_label_2:     "Core Analysis Dimensions",
     stat_label_3:     "Report Analysis Sections",
+
+    /* ── 데스크톱 최적화 모달 ── */
+    desktop_modal_badge:   "Device Optimization Notice",
+    desktop_modal_title:   "Optimized for Desktop (PC) Use",
+    desktop_modal_desc:    "Hillstone Arena's comprehensive strategic consulting and reports are <strong>optimized for desktop (PC) environments</strong>.<br />Certain analytical charts, data entry, and dashboards may be limited on mobile devices. For the best diagnosis experience, we strongly recommend accessing via desktop.",
+    desktop_modal_confirm: "Continue to Consulting",
+    desktop_modal_cancel:  "Cancel",
 
     /* ── 문제 제기 ── */
     problem_label:    "WHY HILLSTONE ARENA",
