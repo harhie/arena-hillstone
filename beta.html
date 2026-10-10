@@ -295,7 +295,13 @@
       margin: 0;
     }
 
-    /* 데스크톱 권장 안내 박스 */
+    /* 하단 CTA 영역 */
+    .vip-cta-block {
+      text-align: center;
+      margin: 16px 0 20px 0;
+      padding-top: 0;
+    }
+
     .vip-desktop-notice {
       background: rgba(255, 255, 255, 0.03);
       border: 1px dashed rgba(255, 255, 255, 0.18);
@@ -304,30 +310,8 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      margin: 0 0 16px 0;
-    }
-
-    .vip-desktop-notice svg {
-      color: #ff8595;
-      flex-shrink: 0;
-    }
-
-    .vip-desktop-notice p {
-      font-size: 0.92rem;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .vip-desktop-notice strong {
-      color: #ffffff;
-    }
-
-    /* 하단 CTA 영역 */
-    .vip-cta-block {
-      text-align: center;
-      margin-top: 0;
-      padding-top: 0;
+      margin: 0 auto;
+      max-width: 780px;
     }
 
     .vip-btn-start {
@@ -476,6 +460,14 @@
         </div>
       </div>
 
+      <!-- ─── 시작하기 CTA ─── -->
+      <div class="vip-cta-block">
+        <a href="https://arena.hillstone.cc" class="vip-btn-start">
+          <span>프라이빗 베타 진단 시작하기</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
       <!-- ─── 데스크톱 권장 안내 ─── -->
       <div class="vip-desktop-notice">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -486,14 +478,6 @@
         <p>
           <strong>[데스크톱 PC 접속 권장]</strong> 본 진단 인터페이스와 종합 보고서는 방대한 정량 데이터와 심층 분석 구조를 다루므로 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 최상의 진단 경험을 위해 가급적 PC로 테스트를 진행해 주시길 권장합니다.
         </p>
-      </div>
-
-      <!-- ─── 시작하기 CTA ─── -->
-      <div class="vip-cta-block">
-        <a href="https://arena.hillstone.cc" class="vip-btn-start">
-          <span>프라이빗 베타 진단 시작하기</span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </main>
 
