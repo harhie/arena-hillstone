@@ -236,10 +236,13 @@
 
     /* 특별 혜택 및 추천사 요청 카드 */
     .vip-benefits-section {
+      min-height: auto !important;
+      height: auto !important;
+      display: block !important;
       background: linear-gradient(180deg, rgba(20, 21, 28, 0.9), rgba(12, 13, 17, 0.95));
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 24px;
-      padding: 24px 36px;
+      padding: 24px 32px;
       margin: 0 0 12px 0;
     }
 
@@ -438,7 +441,7 @@
       </article>
 
       <!-- ─── 특별 혜택 및 추천사 요청 ─── -->
-      <section class="vip-benefits-section">
+      <div class="vip-benefits-section">
         <h3>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8595" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           베타 테스터 분들께 드리는 약속과 정중한 부탁
@@ -471,7 +474,7 @@
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- ─── 데스크톱 권장 안내 ─── -->
       <div class="vip-desktop-notice">
